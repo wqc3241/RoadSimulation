@@ -74,4 +74,25 @@ public class GameManager : MonoBehaviour {
     {
         return SceneManager.GetActiveScene();
     }
+
+
+    public void loadScene(int buildIndex)
+    {
+        if (getCurScene().buildIndex == 0 && buildIndex == 1)
+        {
+            if (testRoad == RoadType.Highway)
+            {
+
+            }
+
+            if (testWeather == WeatherType.Sunny)
+            {
+
+            }
+            else if (testWeather == WeatherType.Rainy)
+            {
+             
+            }
+        }
+    }
 }

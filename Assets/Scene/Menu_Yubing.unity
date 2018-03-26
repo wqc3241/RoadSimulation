@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be356500248fd6c438c098d3f4fc977a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rainyPrefab: {fileID: 0}
+  rainyPrefab: {fileID: 160098, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
   snowPrefab: {fileID: 0}
   windyPrefab: {fileID: 0}
 --- !u!4 &363234903

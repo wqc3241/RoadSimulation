@@ -1453,6 +1453,10 @@ Prefab:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 1164636873}
+    - target: {fileID: 160098, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69b40ef7ee16c834c844b3fa26e0fdda, type: 2}
   m_IsPrefabParent: 0
@@ -1999,15 +2003,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: a7cbe0c1a2d7bf2499725993860cc2f6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.87
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a7cbe0c1a2d7bf2499725993860cc2f6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.69
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a7cbe0c1a2d7bf2499725993860cc2f6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 200
+      value: 381
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a7cbe0c1a2d7bf2499725993860cc2f6, type: 2}
       propertyPath: m_LocalRotation.x

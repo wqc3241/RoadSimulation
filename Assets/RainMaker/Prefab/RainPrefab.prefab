@@ -179,7 +179,7 @@ MonoBehaviour:
   WindZone: {fileID: 18204160}
   WindSpeedRange: {x: 50, y: 100, z: 500}
   WindChangeInterval: {x: 5, y: 30}
-  EnableWind: 1
+  EnableWind: 0
   RainHeight: 25
   RainForwardOffset: -7
   RainMistHeight: 3
