@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Title
   - subTitle
+  - highway
+  - local
+  - rural
+  - roadButtons
+  - weatherButtons
   layers:
   - Default
   - TransparentFX
