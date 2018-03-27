@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/Menu_Yubing.unity
+    guid: 1038c4fc8fe504e4eac784abbc63a0bd
+  - enabled: 1
+    path: Assets/Scene/Scene_Yubing.unity
+    guid: d0e93e2f541a55a459e842e11d27ec14

@@ -10,9 +10,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private GameObject rainyPrefab;
     [SerializeField] private GameObject snowPrefab;
     [SerializeField] private GameObject windyPrefab;
-
-    private WeatherType testWeather;
-    private RoadType testRoad;
+    [SerializeField]  private WeatherType testWeather;
+    [SerializeField]  private RoadType testRoad;
 
     public enum WeatherType {Sunny, Rainy, Snow, Windy};
     public enum RoadType {Highway, Local, Rural};
@@ -34,8 +33,8 @@ public class GameManager : MonoBehaviour {
         //default test choice in menu scene 
         if (getCurScene().buildIndex == 0)
         {
-            testWeather = WeatherType.Sunny;
-            testRoad = RoadType.Highway;
+            setTestWeaterType(WeatherType.Sunny);
+            setTestRoadType(RoadType.Highway);
         }
     }
     // Use this for initialization
@@ -57,17 +56,17 @@ public class GameManager : MonoBehaviour {
         {
             return;
         }
-
-
-        if (w == WeatherType.Rainy && rainyPrefab != null)
-        {
             testWeather = w;
-        }
     }
 
     public void setTestRoadType(RoadType r)
     {
+        if (getCurScene().buildIndex != 0)
+        {
+            return;
+        }
 
+        testRoad = r;
     }
 
     public Scene getCurScene()
@@ -75,8 +74,18 @@ public class GameManager : MonoBehaviour {
         return SceneManager.GetActiveScene();
     }
 
+    public void loadNextScene()
+    { 
+        if (getCurScene().buildIndex == 0 &&
+            testWeather == WeatherType.Sunny &&
+            testRoad == RoadType.Highway)
+        {
+            //temperal scene name
+            SceneManager.LoadScene("Scene_Yubing");
+        }
+    }
 
-    public void loadScene(int buildIndex)
+    public void loadCustomedScene(int buildIndex = 1)
     {
         if (getCurScene().buildIndex == 0 && buildIndex == 1)
         {
