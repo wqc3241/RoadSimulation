@@ -9,6 +9,8 @@ public class SimulatorController : MonoBehaviour {
     public GameObject car;
     public GameObject road;
 
+    public int RandomCars;
+
     float start_pos_z;
     float road_pos_z;
     float car_pos_z;
@@ -20,7 +22,7 @@ public class SimulatorController : MonoBehaviour {
         firstPerson.enabled = true;
         start_pos_z = car.transform.position.z;
         road_pos_z = road.transform.position.z;
-
+        SpawnCars();
     }
 	
 	// Update is called once per frame
@@ -48,5 +50,10 @@ public class SimulatorController : MonoBehaviour {
     public static float ToSingle(double value)
     {
         return (float)value;
+    }
+
+    void SpawnCars()
+    {
+
     }
 }
