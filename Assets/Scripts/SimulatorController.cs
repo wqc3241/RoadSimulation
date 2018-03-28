@@ -9,7 +9,13 @@ public class SimulatorController : MonoBehaviour {
     public GameObject car;
     public GameObject road;
 
-    public int RandomCars;
+    public int RandomCarsNumber;
+    public GameObject RandomCars;
+    public Vector3 spawnValues;
+
+    public float spawnWait;
+    public float startWait;
+    public float waveWait;
 
     float start_pos_z;
     float road_pos_z;
@@ -22,7 +28,7 @@ public class SimulatorController : MonoBehaviour {
         firstPerson.enabled = true;
         start_pos_z = car.transform.position.z;
         road_pos_z = road.transform.position.z;
-        SpawnCars();
+        StartCoroutine(SpawnCars());
     }
 	
 	// Update is called once per frame
@@ -52,8 +58,16 @@ public class SimulatorController : MonoBehaviour {
         return (float)value;
     }
 
-    void SpawnCars()
+    IEnumerator SpawnCars()
     {
-
+        for (int i = 0; i < RandomCarsNumber; i++)
+        {
+            Vector3 spawnPosition = new Vector3(Random.Range(ToSingle(-3.3), ToSingle(-1.5)), spawnValues.y, spawnValues.z);
+            Quaternion spawnRotation = Quaternion.identity;
+            Instantiate(RandomCars, spawnPosition, spawnRotation);
+            Debug.Log(RandomCars.transform);
+            yield return new WaitForSeconds(spawnWait);
+        }
+        yield return new WaitForSeconds(waveWait);
     }
 }
