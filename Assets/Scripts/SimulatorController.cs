@@ -64,8 +64,9 @@ public class SimulatorController : MonoBehaviour {
         {
             Vector3 spawnPosition = new Vector3(Random.Range(ToSingle(-3.3), ToSingle(-1.5)), spawnValues.y, spawnValues.z);
             Quaternion spawnRotation = Quaternion.identity;
+            spawnRotation.eulerAngles = new Vector3(0, 180, 0);
             Instantiate(RandomCars, spawnPosition, spawnRotation);
-            Debug.Log(RandomCars.transform);
+            Debug.Log(RandomCars.transform.position);
             yield return new WaitForSeconds(spawnWait);
         }
         yield return new WaitForSeconds(waveWait);

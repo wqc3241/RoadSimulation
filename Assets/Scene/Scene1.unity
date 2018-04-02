@@ -479,7 +479,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 208467554}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &208467556
 Behaviour:
   m_ObjectHideFlags: 0
@@ -666,8 +666,8 @@ MonoBehaviour:
   car: {fileID: 1604732449}
   road: {fileID: 1523878661}
   RandomCarsNumber: 5
-  RandomCars: {fileID: 1646981259178978, guid: 388d83314c9e51c40956fb6908979eee, type: 2}
-  spawnValues: {x: -3.4, y: 0.96, z: 300}
+  RandomCars: {fileID: 1588101149975812, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+  spawnValues: {x: -3.4, y: 0.99, z: 100}
   spawnWait: 1
   startWait: 1
   waveWait: 1
@@ -2239,6 +2239,87 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1001 &1203343282
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334796713977374, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588101149975812, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_Name
+      value: Car_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 54781898680016792, guid: 66f31b5186080364aa555b8ca0513e98,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54781898680016792, guid: 66f31b5186080364aa555b8ca0513e98,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1989356960148900, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_Name
+      value: Car_2Body
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807366756904936, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_Name
+      value: Car_2LF
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351183374265522, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_Name
+      value: Car_2LR
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494156406291564, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_Name
+      value: Car_2RF
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837010522717848, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+      propertyPath: m_Name
+      value: Car_2RR
+      objectReference: {fileID: 0}
+    - target: {fileID: 23496868733589662, guid: 66f31b5186080364aa555b8ca0513e98,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 66f31b5186080364aa555b8ca0513e98, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1253513722
 Prefab:
   m_ObjectHideFlags: 0
