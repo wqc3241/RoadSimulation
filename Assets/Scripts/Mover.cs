@@ -5,12 +5,13 @@ using UnityEngine;
 public class Mover : MonoBehaviour {
 
     public Rigidbody rb;
+    public float speed;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * Random.Range(10,50);
+        rb.velocity = transform.forward * speed ;
     }
 
     // Update is called once per frame
