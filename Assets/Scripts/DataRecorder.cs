@@ -6,22 +6,31 @@ using System;
 
 public class DataRecorder : MonoBehaviour {
 
-    public string outputPath = "Assets/Data/speedData.txt";
-    public bool recording = true;
+    public string outputPath;
 
+    private bool recording = false;
     private Rigidbody carRB;
-    
+    private int outputCount = 1;
+
+    //public enum outputType {speed, wheel, brake, accelerator};
     //startTime : list of speed change at each delta time after start time
+
+    //record the speed, wheel, accelerator, brake
     private Dictionary<float, List<float>> speedRecords;
     private Dictionary<float, double> speedData = new Dictionary<float, double>();
 
-	// Use this for initialization
-	void Awake ()
+    //output order:time speed, wheel, brake, acceleration
+    private List<List<float>> allData = new List<List<float>>();
+
+    // Use this for initialization
+    void Awake ()
     {
         carRB = GetComponentInParent<Rigidbody>();
 
         if (carRB == null)
             Debug.LogError("Error no rigbidbody attached to parent object");
+
+        startRecord();
 	}
 	
 	// Update is called once per frame
@@ -29,32 +38,114 @@ public class DataRecorder : MonoBehaviour {
     {
 	    if (Input.GetKeyDown("q"))
         {
-            storeData();
-        }
+            if (recording)
+                storeRecord();
+            else
+                startRecord();
+        }   
 	}
 
     private void FixedUpdate()
     {
         if (recording && carRB)
         {
-            float mph = carRB.velocity.magnitude * 2.237f;
-            
-            speedData.Add((float)Math.Round((double)Time.time, 2), (float)Math.Round((double)mph, 2) );
+            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(), getBrake(), getAcceleration()});
         }
     }
-
 
     private void storeData()
     {
         recording = false;
+
         //only perform at the end of the driving test
         string path = outputPath;
+        string filename = "recordData" + outputCount.ToString() + "--" +  System.DateTime.Now.ToString().Replace('/', '-').Replace(' ', '-').Replace(':', '-') +".txt";
+        path += filename;
+        Debug.Log(path);
+
+        outputCount++;
+
         StreamWriter writer = new StreamWriter(path, true);
-        foreach (KeyValuePair<float, double> speed in speedData)
+        writer.WriteLine("Time        " + "Speed       " + "Wheel       " +  "Brake       " + "Acceleration ");
+
+        foreach (List<float> row in allData)
         {
-            writer.WriteLine(speed.Key.ToString("0.00") + "         "  + speed.Value.ToString("0.00"));
+            string tempOut = "";
+            foreach(float record in row)
+            {
+                tempOut += record.ToString("0.00") + "        ";
+            }
+            writer.WriteLine(tempOut);
         }
 
         writer.Close();
+
+
+        //clean datas
+        foreach (var item in allData)
+            item.Clear();
+
+        allData.Clear();
     }
+
+    /// <summary>
+    /// internal usage for fetching driving information
+    /// To Implement following function after equipment set up
+    /// <returns></returns>
+    private float getTime()
+    {
+        return (float)Math.Round((double)Time.time, 2);
+    }
+
+    private float getSpeed()
+    {
+        //default velocity is m/s
+        float mph = carRB.velocity.magnitude * 2.237f;
+        return (float)Math.Round((double)mph, 2);
+    }
+
+    private float getWheel()
+    {
+        //To Do
+        return 0;
+    }
+
+    private float getBrake()
+    {
+        //To Do 
+        return 0;
+    }
+
+    private float getAcceleration()
+    {
+        //To Do
+        return 0;
+    }
+
+
+    /// <summary>
+    /// public method for other script to called to store or start record data
+    /// </summary>
+    public void startRecord()
+    {
+        if (recording)
+        {
+            return;
+        }
+
+        Debug.Log("Recording");
+        recording = true;
+    }
+
+    public void storeRecord()
+    {
+        if (!recording)
+        {
+            return;
+        }
+
+        storeData();
+        Debug.Log("DataStored");
+    }
+
 }

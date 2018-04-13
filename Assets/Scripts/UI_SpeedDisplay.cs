@@ -21,14 +21,13 @@ public class UI_SpeedDisplay : MonoBehaviour {
 
         if (speedText == null)
             Debug.LogError("Cannot find speed Text in child");
-
     }
 	
 
     public void updateSpeed(float speed)
     {
         //float mph = rigidbody.velocity.magnitude * 2.237;
-        float mph = (float)System.Math.Round(speed*2.237f, 2);
+        float mph = (float)System.Math.Round(speed * 2.23693629f, 2);
         
         speedText.text = mph.ToString() + " MPH";
 
