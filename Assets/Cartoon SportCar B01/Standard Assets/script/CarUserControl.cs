@@ -28,6 +28,7 @@ namespace UnityStandardAssets.Vehicles.Car
 #else
             m_Car.Move(h, v, v, 0f);
 #endif
+            Debug.Log(h.ToString() + " vrt: " +  v.ToString() + " handbrake: " +  handbrake.ToString() + " " + Input.GetAxis("Horizontal"));
         }
     }
 }
