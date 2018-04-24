@@ -92,31 +92,31 @@ public class DataRecorder : MonoBehaviour {
     /// internal usage for fetching driving information
     /// To Implement following function after equipment set up
     /// <returns></returns>
-    private float getTime()
+    public float getTime()
     {
         return (float)Math.Round((double)Time.time, 2);
     }
 
-    private float getSpeed()
+    public float getSpeed()
     {
         //default velocity is m/s
         float mph = carRB.velocity.magnitude * 2.237f;
         return (float)Math.Round((double)mph, 2);
     }
 
-    private float getWheel()
+    public float getWheel()
     {
         //To Do
         return 0;
     }
 
-    private float getBrake()
+    public float getBrake()
     {
         //To Do 
         return 0;
     }
 
-    private float getAcceleration()
+    public float getAcceleration()
     {
         //To Do
         return 0;
