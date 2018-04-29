@@ -8,6 +8,7 @@ public class SimulatorController : MonoBehaviour {
     public Camera firstPerson;
     public GameObject car;
     public GameObject road;
+    public GameObject recordArea;
 
     public int RandomCarsNumber;
     public GameObject RandomCars;
@@ -21,6 +22,9 @@ public class SimulatorController : MonoBehaviour {
     float road_pos_z;
     float car_pos_z;
 
+    float roadArea_pos_z;
+    public float roadArea_scale_z;
+
     // Use this for initialization
     void Start()
     {
@@ -29,6 +33,8 @@ public class SimulatorController : MonoBehaviour {
         start_pos_z = car.transform.position.z;
         road_pos_z = road.transform.position.z;
         StartCoroutine(SpawnCars());
+        SpawnRecordArea();
+        recordArea.transform.position = new Vector3(1.5f, -3.5f, 50f);
     }
 	
 	// Update is called once per frame
@@ -43,6 +49,8 @@ public class SimulatorController : MonoBehaviour {
         {
             car_pos.z = start_pos_z;
             car.transform.position = car_pos;
+            recordArea.transform.position = new Vector3(1.5f, -3.5f, Random.Range(0.0f, 490.0f));
+            SpawnRecordArea();
         }
 
         if (car_pos.z < -24.0)
@@ -70,5 +78,14 @@ public class SimulatorController : MonoBehaviour {
             yield return new WaitForSeconds(spawnWait);
         }
         yield return new WaitForSeconds(waveWait);
+    }
+
+    void SpawnRecordArea()
+    {
+        Vector3 spawnPosition = new Vector3(1.5f, -3.5f, Random.Range(0.0f, 490.0f));
+        Quaternion spawnRotation = Quaternion.identity;
+        spawnRotation.eulerAngles = new Vector3(-90, 0, -180);
+        Instantiate(RandomCars, spawnPosition, spawnRotation);
+        Debug.Log(RandomCars.transform.position);
     }
 }
