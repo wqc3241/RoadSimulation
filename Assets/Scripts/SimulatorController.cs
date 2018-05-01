@@ -25,6 +25,8 @@ public class SimulatorController : MonoBehaviour {
     float roadArea_pos_z;
     public float roadArea_scale_z;
 
+    private GameObject instantiatedRoadSign;
+
     // Use this for initialization
     void Start()
     {
@@ -47,9 +49,9 @@ public class SimulatorController : MonoBehaviour {
         var car_pos = car.transform.position;
         if (car_pos.z > 470.0)
         {
+            Destroy(instantiatedRoadSign);
             car_pos.z = start_pos_z;
             car.transform.position = car_pos;
-            recordArea.transform.position = new Vector3(1.5f, -3.5f, Random.Range(0.0f, 490.0f));
             SpawnRecordArea();
         }
 
@@ -80,12 +82,16 @@ public class SimulatorController : MonoBehaviour {
         yield return new WaitForSeconds(waveWait);
     }
 
+    bool CarPositionReset(GameObject car)
+    {
+        return car.transform.position.z == 470;
+    }
+
     void SpawnRecordArea()
     {
-        Vector3 spawnPosition = new Vector3(1.5f, -3.5f, Random.Range(0.0f, 490.0f));
+        Vector3 spawnPosition = new Vector3(0f, 0.75f, Random.Range(0.0f, 450.0f));
         Quaternion spawnRotation = Quaternion.identity;
-        spawnRotation.eulerAngles = new Vector3(-90, 0, -180);
-        Instantiate(RandomCars, spawnPosition, spawnRotation);
-        Debug.Log(RandomCars.transform.position);
+        spawnRotation.eulerAngles = new Vector3(-90, 0, 0);
+        instantiatedRoadSign = Instantiate(recordArea, spawnPosition, spawnRotation);
     }
 }
