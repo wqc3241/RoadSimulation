@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 195965497126018656}
   m_Layer: 0
   m_Name: AutoCar
-  m_TagString: Untagged
+  m_TagString: SpawnedCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1197,6 +1197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveback: 0
+  moveDistance: 2000
+  existTime: 10
+  moveSpeed: 50
+  AutoCarCollisionAvoidSpeed: 55
+  PlayerCarCollisionAvoidSpeedDiff: 10
   initPos: {x: 0, y: 0, z: 0}
   tarPos: {x: 0, y: 0, z: 0}
 --- !u!195 &195965497126018656

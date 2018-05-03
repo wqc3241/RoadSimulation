@@ -9,19 +9,25 @@ public class AutoMoveCar : MonoBehaviour {
     public float moveDistance = 2000f;
     public float existTime = 10.0f;
     public float moveSpeed = 50.0f;
+
+    [Tooltip("The default speed to avoid collision")]
+    public float AutoCarCollisionAvoidSpeed = 55.0f;
+    public float PlayerCarCollisionAvoidSpeedDiff = 10.0f;
+
     [SerializeField] private Vector3 initPos;
     [SerializeField] private Vector3 tarPos;
 
     private NavMeshAgent agent;
+    private Rigidbody rb;
     // Use this for initialization
     void Start ()
     {
+        rb = GetComponent<Rigidbody>();
         initPos = transform.position;
-        tarPos = initPos + moveDistance * transform.forward;
+        tarPos =  GameObject.Find("EndOfRoad").transform.position;
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(tarPos);
-        agent.speed = moveSpeed;
-        Destroy(gameObject, existTime);
+        initSetUp();
+        //Destroy(gameObject, existTime);
     }
 
     // Update is called once per frame
@@ -30,8 +36,47 @@ public class AutoMoveCar : MonoBehaviour {
         
     }
 
-    public void initSetUp(float Dis, float time, float speed)
+    public void initSetUp()
     {
+        Debug.Log(tarPos);
+        agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(tarPos);
+        agent.speed = moveSpeed;
         ///to Implement
     }
+
+    public void SetSpeed(float MPHSpeed)
+    {
+        moveSpeed = MPHSpeed * 0.44704f;
+        initSetUp();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SpawnedCar"))
+        {
+            SetSpeed(AutoCarCollisionAvoidSpeed);
+        }
+        else if (other.CompareTag("Player"))
+        {
+            if (other.transform.position.z - transform.position.z > 0 && rb.velocity.z > 0)
+            {
+                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() - PlayerCarCollisionAvoidSpeedDiff);
+            }
+            else if (other.transform.position.z - transform.position.z > 0 && rb.velocity.z < 0)
+            {
+                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() + PlayerCarCollisionAvoidSpeedDiff);
+            }
+            else if (other.transform.position.z - transform.position.z < 0 && rb.velocity.z < 0)
+            {
+                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() - PlayerCarCollisionAvoidSpeedDiff);
+            }
+            else if (other.transform.position.z - transform.position.z < 0 && rb.velocity.z > 0)
+            {
+                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() + PlayerCarCollisionAvoidSpeedDiff);
+            }
+        }
+    }
+
+
 }

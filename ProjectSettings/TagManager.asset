@@ -12,6 +12,7 @@ TagManager:
   - roadButtons
   - weatherButtons
   - Boundary
+  - SpawnedCar
   layers:
   - Default
   - TransparentFX
