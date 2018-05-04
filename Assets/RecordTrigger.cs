@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class recordAreaScript : MonoBehaviour {
+public class RecordTrigger : MonoBehaviour {
 
     void onTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+/*        if (other.tag == "Player")
         {
             Debug.Log("Object Entered the tirgger");
         }
-
+        */
     }
 
     void onTriggerStay(Collider other)
@@ -23,3 +23,4 @@ public class recordAreaScript : MonoBehaviour {
         Debug.Log("object exit");
     }
 }
+

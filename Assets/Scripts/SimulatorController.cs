@@ -76,7 +76,7 @@ public class SimulatorController : MonoBehaviour {
             Quaternion spawnRotation = Quaternion.identity;
             spawnRotation.eulerAngles = new Vector3(0, 180, 0);
             Instantiate(RandomCars, spawnPosition, spawnRotation);
-            Debug.Log(RandomCars.transform.position);
+            //Debug.Log(RandomCars.transform.position);
             yield return new WaitForSeconds(spawnWait);
         }
         yield return new WaitForSeconds(waveWait);

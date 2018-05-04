@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33597713806259734}
   - component: {fileID: 65400823512050374}
   - component: {fileID: 23350345886748618}
+  - component: {fileID: 114358066039079190}
   m_Layer: 0
   m_Name: recordArea (1)
   m_TagString: Untagged
@@ -182,3 +183,14 @@ MonoBehaviour:
   MessageText: Working Zone
   ScreenDisplayTime: 2
   DelayBetweenScreens: 0.5
+--- !u!114 &114358066039079190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494330019731912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166206f967518b94e99dbc3799d94afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
