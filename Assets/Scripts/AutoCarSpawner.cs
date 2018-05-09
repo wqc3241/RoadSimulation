@@ -66,7 +66,8 @@ public class AutoCarSpawner : MonoBehaviour {
             return;
         }
 
-        AutoMoveCar insCar =  Instantiate(autoCarPrefab).GetComponent<AutoMoveCar>();
+        AutoMoveCar insCar =  Instantiate(autoCarPrefab, transform).GetComponent<AutoMoveCar>();
+        insCar.transform.parent = null;
         spwawnAmount--;
         insCar.SetSpeed(spawnSpeed);
     }
