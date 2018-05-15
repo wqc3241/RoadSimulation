@@ -128,6 +128,12 @@ namespace UnityStandardAssets.Vehicles.Car
 
         public void Move(float steering, float accel, float footbrake, float handbrake)
         {
+            if (m_Rigidbody.velocity.magnitude < 0.0001f)
+            {
+                footbrake = 0;
+                handbrake = 0;
+            }
+
             for (int i = 0; i < 4; i++)
             {
                 Quaternion quat;

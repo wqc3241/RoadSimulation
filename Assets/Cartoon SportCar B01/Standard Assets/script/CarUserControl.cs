@@ -11,6 +11,12 @@ namespace UnityStandardAssets.Vehicles.Car
     {
         private CarController m_Car; // the car controller we want to use
 
+        Vector3 newpos;
+        Vector3 fwd;
+        Vector3 prevpos;
+        Vector3 movement;
+
+        bool moveBack = false;
 
         private void Awake()
         {
@@ -18,6 +24,28 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Car = GetComponent<CarController>();
         }
 
+        void Update()
+        {
+            newpos = transform.position;
+            fwd = transform.forward;
+            movement = newpos - prevpos;
+            if (Vector3.Dot(fwd, movement) < 0)
+            {
+                moveBack = true;
+                print("Moving backwards");
+            }
+            else
+            {
+                moveBack = false;
+                print("Moving forwards");
+            }
+        }
+
+        void LateUpdate()
+        {
+            prevpos = transform.position;
+            fwd = transform.forward;
+        }
 
         private void FixedUpdate()
         {
@@ -33,11 +61,20 @@ namespace UnityStandardAssets.Vehicles.Car
 
 #if !MOBILE_INPUT
             float handbrake = CrossPlatformInputManager.GetAxis("Jump");
-            m_Car.Move(h, v, b, handbrake);
+
+
+            if (!moveBack)
+                m_Car.Move(h, v, b, handbrake);
+            else
+            {
+                m_Car.Move(h, v, 0, 0);
+                
+            }
+
 #else
             m_Car.Move(h, v, v, 0f);
 #endif
-            //Debug.Log(h.ToString() + " vrt: " +  v.ToString() + " brake: " + b.ToString() + " handbrake: " +  handbrake.ToString() + " " + Input.GetAxis("Horizontal"));
+            Debug.Log("rb.velocity: " + GetComponent<Rigidbody>().velocity.ToString() +  " h: " + h.ToString() + " vrt: " +  v.ToString() + " brake: " + b.ToString() + " handbrake: " +  handbrake.ToString() + " " + Input.GetAxis("Horizontal"));
         }
     }
 }
