@@ -138,10 +138,12 @@ namespace UnityStandardAssets.Vehicles.Car
             }
 
             //clamp input values
+
             steering = Mathf.Clamp(steering, -1, 1);
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
-            BrakeInput = footbrake = -1*Mathf.Clamp(footbrake, -1, 0);
+            BrakeInput = footbrake = -1 * Mathf.Clamp(footbrake, -1, 0);
             handbrake = Mathf.Clamp(handbrake, 0, 1);
+
 
             //Set the steer on the front wheels.
             //Assuming that wheels 0 and 1 are the front wheels.
@@ -152,7 +154,11 @@ namespace UnityStandardAssets.Vehicles.Car
             m_WheelColliders[1].steerAngle = m_SteerAngle;
 
             SteerHelper();
+
             ApplyDrive(accel, footbrake);
+
+
+
             CapSpeed();
 
             //Set the handbrake.
@@ -163,6 +169,8 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_WheelColliders[2].brakeTorque = hbTorque;
                 m_WheelColliders[3].brakeTorque = hbTorque;
             }
+
+            Debug.Log(m_Rigidbody.velocity);
 
 
             CalculateRevs();
@@ -223,6 +231,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             for (int i = 0; i < 4; i++)
             {
+
                 if (CurrentSpeed > 5 && Vector3.Angle(transform.forward, m_Rigidbody.velocity) < 50f)
                 {
                     m_WheelColliders[i].brakeTorque = m_BrakeTorque*footbrake;
@@ -230,7 +239,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 else if (footbrake > 0)
                 {
                     m_WheelColliders[i].brakeTorque = 0f;
-                    m_WheelColliders[i].motorTorque = -m_ReverseTorque*footbrake;
+                    m_WheelColliders[i].motorTorque = -m_ReverseTorque * footbrake;
                 }
             }
         }

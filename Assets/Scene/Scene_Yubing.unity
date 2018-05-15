@@ -4993,7 +4993,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 470836, guid: ffe00fa3bd41b9a4db665bf728e3c1e1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 470836, guid: ffe00fa3bd41b9a4db665bf728e3c1e1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5110,6 +5110,10 @@ Prefab:
     - target: {fileID: 11452772, guid: ffe00fa3bd41b9a4db665bf728e3c1e1, type: 2}
       propertyPath: m_FullTorqueOverAllWheels
       value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452772, guid: ffe00fa3bd41b9a4db665bf728e3c1e1, type: 2}
+      propertyPath: m_MaximumSteerAngle
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffe00fa3bd41b9a4db665bf728e3c1e1, type: 2}
