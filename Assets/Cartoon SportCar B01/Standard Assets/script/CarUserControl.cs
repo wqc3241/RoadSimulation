@@ -74,7 +74,7 @@ namespace UnityStandardAssets.Vehicles.Car
 #else
             m_Car.Move(h, v, v, 0f);
 #endif
-            Debug.Log("rb.velocity: " + GetComponent<Rigidbody>().velocity.ToString() +  " h: " + h.ToString() + " vrt: " +  v.ToString() + " brake: " + b.ToString() + " handbrake: " +  handbrake.ToString() + " " + Input.GetAxis("Horizontal"));
+            //Debug.Log("rb.velocity: " + GetComponent<Rigidbody>().velocity.ToString() +  " h: " + h.ToString() + " vrt: " +  v.ToString() + " brake: " + b.ToString() + " handbrake: " +  handbrake.ToString() + " " + Input.GetAxis("Horizontal"));
         }
     }
 }

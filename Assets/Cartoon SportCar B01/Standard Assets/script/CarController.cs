@@ -146,8 +146,14 @@ namespace UnityStandardAssets.Vehicles.Car
             //clamp input values
 
             steering = Mathf.Clamp(steering, -1, 1);
+
+            Debug.Log(m_Rigidbody.velocity.magnitude);
+
+
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
             BrakeInput = footbrake = -1 * Mathf.Clamp(footbrake, -1, 0);
+
+
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
 
@@ -238,14 +244,14 @@ namespace UnityStandardAssets.Vehicles.Car
             for (int i = 0; i < 4; i++)
             {
 
-                if (CurrentSpeed > 5 && Vector3.Angle(transform.forward, m_Rigidbody.velocity) < 50f)
+                if (Vector3.Angle(transform.forward, m_Rigidbody.velocity) < 50f)
                 {
                     m_WheelColliders[i].brakeTorque = m_BrakeTorque*footbrake;
                 }
                 else if (footbrake > 0)
                 {
                     m_WheelColliders[i].brakeTorque = 0f;
-                    m_WheelColliders[i].motorTorque = -m_ReverseTorque * footbrake;
+                    //m_WheelColliders[i].motorTorque = -m_ReverseTorque * footbrake;
                 }
             }
         }
