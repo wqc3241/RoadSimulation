@@ -32,12 +32,12 @@ namespace UnityStandardAssets.Vehicles.Car
             if (Vector3.Dot(fwd, movement) < 0)
             {
                 moveBack = true;
-                print("Moving backwards");
+                //print("Moving backwards");
             }
             else
             {
                 moveBack = false;
-                print("Moving forwards");
+                //print("Moving forwards");
             }
         }
 
@@ -49,15 +49,24 @@ namespace UnityStandardAssets.Vehicles.Car
 
         private void FixedUpdate()
         {
+            float h, v, b;
 
+            if (LogitechGSDK.LogiIsConnected(0) == false){
+                h = CrossPlatformInputManager.GetAxis("Horizontal");
+                v = CrossPlatformInputManager.GetAxis("Vertical");
+                b = CrossPlatformInputManager.GetAxis("Vertical");
+            }
+            else
+            { 
+                LogitechGSDK.DIJOYSTATE2ENGINES rec;
+                rec = LogitechGSDK.LogiGetStateUnity(0);
 
-            LogitechGSDK.DIJOYSTATE2ENGINES rec;
-            rec = LogitechGSDK.LogiGetStateUnity(0);
+                // pass the input to the car!
+                h = CrossPlatformInputManager.GetAxis("Horizontal");
+                v = -(rec.lY - 32767);
+                b = rec.lRz - 32767;
+            }
 
-            // pass the input to the car!
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = -(rec.lY - 32767);
-            float b = rec.lRz - 32767;
 
 #if !MOBILE_INPUT
             float handbrake = CrossPlatformInputManager.GetAxis("Jump");
@@ -68,7 +77,7 @@ namespace UnityStandardAssets.Vehicles.Car
             else
             {
                 m_Car.Move(h, v, 0, 0);
-                
+
             }
 
 #else

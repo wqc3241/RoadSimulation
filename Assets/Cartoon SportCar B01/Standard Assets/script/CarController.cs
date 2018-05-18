@@ -147,7 +147,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             steering = Mathf.Clamp(steering, -1, 1);
 
-            Debug.Log(m_Rigidbody.velocity.magnitude);
+            //Debug.Log(m_Rigidbody.velocity.magnitude);
 
 
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
@@ -182,7 +182,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_WheelColliders[3].brakeTorque = hbTorque;
             }
 
-            Debug.Log(m_Rigidbody.velocity);
+            //Debug.Log(m_Rigidbody.velocity);
 
 
             CalculateRevs();

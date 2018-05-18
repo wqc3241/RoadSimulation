@@ -34,16 +34,16 @@ public class DataRecorder : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
+/*	void Update ()
     {
-	    if (Input.GetKeyDown("q"))
-        {
-            if (recording)
-                storeRecord();
-            else
-                startRecord();
-        }   
+
+        if (recording)
+            storeRecord();
+        else
+            startRecord();
+
 	}
+    */
 
     private void FixedUpdate()
     {
