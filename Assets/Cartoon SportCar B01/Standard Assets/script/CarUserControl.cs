@@ -39,6 +39,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 moveBack = false;
                 //print("Moving forwards");
             }
+
         }
 
         void LateUpdate()
@@ -55,16 +56,30 @@ namespace UnityStandardAssets.Vehicles.Car
                 h = CrossPlatformInputManager.GetAxis("Horizontal");
                 v = CrossPlatformInputManager.GetAxis("Vertical");
                 b = CrossPlatformInputManager.GetAxis("Vertical");
+
+                if (Input.GetKeyDown("r")){
+                    m_Car.transform.Rotate(Vector3.up * 90);
+                }
             }
             else
             { 
                 LogitechGSDK.DIJOYSTATE2ENGINES rec;
                 rec = LogitechGSDK.LogiGetStateUnity(0);
 
+
                 // pass the input to the car!
-                h = CrossPlatformInputManager.GetAxis("Horizontal");
+                //h = CrossPlatformInputManager.GetAxis("Horizontal");
+
+                h = Mathf.Clamp(rec.lX,-1,1) ;
                 v = -(rec.lY - 32767);
                 b = rec.lRz - 32767;
+
+                //Debug.Log(h + " "+ v +" " + b);
+
+                if (rec.rgbButtons[7] == 128)
+                {
+                    m_Car.transform.Rotate(Vector3.up * 90);
+                }
             }
 
 
@@ -77,7 +92,6 @@ namespace UnityStandardAssets.Vehicles.Car
             else
             {
                 m_Car.Move(h, v, 0, 0);
-
             }
 
 #else

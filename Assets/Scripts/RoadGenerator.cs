@@ -6,7 +6,7 @@ public class RoadGenerator : MonoBehaviour {
 
     public GameObject exitPrefab;
     public GameObject straightPrefab;
-    public Transform roadHoder;
+    public Transform roadHolder;
     public float exitRoadLength;
     public float straightRoadLength;
     public int strightRoadCount;
@@ -16,7 +16,7 @@ public class RoadGenerator : MonoBehaviour {
 	// Use this for initialization
 	public void buildRoad ()
     {
-        headPos = transform.position;
+        headPos = roadHolder.transform.position;
 	    if (exitPrefab == null || straightPrefab == null)
         {
             Debug.LogError("Missing road prefab");
@@ -36,10 +36,10 @@ public class RoadGenerator : MonoBehaviour {
 
     void createNewRoad(GameObject prefab, Vector3 headPos)
     {
-        if (roadHoder == null)
+        if (roadHolder == null)
             Instantiate(prefab, headPos, Quaternion.identity);
         else
-            Instantiate(prefab, headPos, Quaternion.identity, roadHoder);
+            Instantiate(prefab, headPos, Quaternion.identity, roadHolder);
 
     }
 

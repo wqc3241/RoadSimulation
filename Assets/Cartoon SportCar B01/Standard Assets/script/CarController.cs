@@ -150,9 +150,10 @@ namespace UnityStandardAssets.Vehicles.Car
             //Debug.Log(m_Rigidbody.velocity.magnitude);
 
 
-            AccelInput = accel = Mathf.Clamp(accel, 0, 1);
-            BrakeInput = footbrake = -1 * Mathf.Clamp(footbrake, -1, 0);
+            AccelInput = accel =  Mathf.Clamp(accel, 0, 1);
+            BrakeInput = footbrake =  -1 * Mathf.Clamp(footbrake, -1, 0);
 
+            //Debug.Log(AccelInput + " " + BrakeInput);
 
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
@@ -306,10 +307,10 @@ namespace UnityStandardAssets.Vehicles.Car
 
                     // avoiding all four tires screeching at the same time
                     // if they do it can lead to some strange audio artefacts
-                    if (!AnySkidSoundPlaying())
+                    /*if (!AnySkidSoundPlaying())
                     {
                         m_WheelEffects[i].PlayAudio();
-                    }
+                    }*/
                     continue;
                 }
 
@@ -374,7 +375,7 @@ namespace UnityStandardAssets.Vehicles.Car
             }
         }
 
-
+        /*
         private bool AnySkidSoundPlaying()
         {
             for (int i = 0; i < 4; i++)
@@ -385,6 +386,6 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
             }
             return false;
-        }
+        }*/
     }
 }
