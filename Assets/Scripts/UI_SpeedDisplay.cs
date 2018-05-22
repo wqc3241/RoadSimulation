@@ -27,7 +27,7 @@ public class UI_SpeedDisplay : MonoBehaviour {
     public void updateSpeed(float speed)
     {
         //float mph = rigidbody.velocity.magnitude * 2.237;
-        float mph = (float)System.Math.Round(speed * 2.23693629f, 2);
+        int mph = (int)System.Math.Round(speed * 2.23693629f, 2);
 
         speedText.color = Color.red;
         speedText.text = mph.ToString() + " MPH";
