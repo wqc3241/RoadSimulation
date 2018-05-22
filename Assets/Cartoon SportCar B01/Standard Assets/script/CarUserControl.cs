@@ -70,7 +70,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 // pass the input to the car!
                 //h = CrossPlatformInputManager.GetAxis("Horizontal");
 
-                h = Mathf.Clamp(rec.lX,-1,1) ;
+                h = CrossPlatformInputManager.GetAxis("Horizontal");
                 v = -(rec.lY - 32767);
                 b = rec.lRz - 32767;
 
