@@ -26,7 +26,7 @@ public class SpeedDetector : MonoBehaviour {
                 GetComponentInParent<ElectronicRoadSign.ElectronicRoadSignScript>().MessageText =
                 other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed().ToString();
             }
-            Debug.Log("Dector car");
+            //Debug.Log("Dector car");
         }
     }
 }
