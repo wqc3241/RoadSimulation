@@ -17,16 +17,16 @@ namespace ElectronicRoadSign
 		private const int _TEXTURE_COLUMNS = 16;
 
 		// number of rows of characters on the texture
-		private const int _TEXTURE_ROWS = 4;
+		private const int _TEXTURE_ROWS = 1;
 
 		// the character height ( 180 / 2048 )
-		private const float _TEXTURE_PANEL_HEIGHT = 0.087890625f;
+		public  float _TEXTURE_PANEL_HEIGHT = 0.087890625f;
 
 		// the character width ( 128 / 2048 )
-		private const float _TEXTURE_PANEL_WIDTH = 0.0625f;
+		public  float _TEXTURE_PANEL_WIDTH = 0.0625f;
 
 		// texture margin around the display characters
-		private const float _TEXTURE_PANEL_MARGIN = 0.001f;
+		public  float _TEXTURE_PANEL_MARGIN = 0.001f;
 
 		#endregion
 
