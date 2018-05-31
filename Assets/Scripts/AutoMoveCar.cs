@@ -24,7 +24,7 @@ public class AutoMoveCar : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         initPos = transform.position;
-        tarPos =  GameObject.Find("EndOfRoad").transform.position;
+        tarPos =  Vector3.zero;
         agent = GetComponent<NavMeshAgent>();
         initSetUp();
         //Destroy(gameObject, existTime);
@@ -40,9 +40,17 @@ public class AutoMoveCar : MonoBehaviour {
     {
         Debug.Log(tarPos);
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(tarPos);
+        //agent.SetDestination(tarPos);
+        //setTarget(tarPos);
         agent.speed = moveSpeed;
         ///to Implement
+    }
+
+    public void setTarget(Vector3 tar)
+    {
+        tarPos = tar;
+        agent.SetDestination(tarPos);
+
     }
 
     public void SetSpeed(float MPHSpeed)
