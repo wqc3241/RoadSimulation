@@ -14,10 +14,10 @@ namespace ElectronicRoadSign
 		public const string DISPLAYABLE_CHARACTERS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$^()-+=<>?,./:'*_\"#;[]{}%&";
 
 		// number of characters per row on the texture
-		private const int _TEXTURE_COLUMNS = 16;
+		public int _TEXTURE_COLUMNS = 16;
 
 		// number of rows of characters on the texture
-		private const int _TEXTURE_ROWS = 1;
+		public int _TEXTURE_ROWS = 1;
 
 		// the character height ( 180 / 2048 )
 		public  float _TEXTURE_PANEL_HEIGHT = 0.087890625f;
@@ -241,7 +241,7 @@ namespace ElectronicRoadSign
 		private void DisplayText()
 		{
 			// display 3 lines of text
-			for ( int i = 0; i < 3; i++ )
+			for ( int i = 0; i < 1; i++ )
 			{
 				// calculate the line index
 				var lineIndex = ( _screen * 3 ) + i;
