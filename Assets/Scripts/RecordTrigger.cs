@@ -162,7 +162,7 @@ public class RecordTrigger : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerCar")
+        if (other.tag == "Player")
         {
             startRecord();
         }
@@ -176,7 +176,7 @@ public class RecordTrigger : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if(other.tag == "PlayerCar") {
+        if(other.tag == "Player") {
             storeRecord();
         }
     }
