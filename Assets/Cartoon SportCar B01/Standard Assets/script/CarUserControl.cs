@@ -18,6 +18,11 @@ namespace UnityStandardAssets.Vehicles.Car
 
         bool moveBack = false;
 
+        void Start()
+        {
+            m_Car.Move(0, 50, 0, 0);
+        }
+
         private void Awake()
         {
             // get the car controller
@@ -71,10 +76,8 @@ namespace UnityStandardAssets.Vehicles.Car
                 //h = CrossPlatformInputManager.GetAxis("Horizontal");
 
                 h = CrossPlatformInputManager.GetAxis("Horizontal");
-                v = -(rec.lY - 32767);
+                v = -(rec.lY + 32767);
                 b = rec.lRz - 32767;
-
-                //Debug.Log(h + " "+ v +" " + b);
 
                 if (rec.rgbButtons[7] == 128)
                 {
@@ -86,6 +89,7 @@ namespace UnityStandardAssets.Vehicles.Car
 #if !MOBILE_INPUT
             float handbrake = CrossPlatformInputManager.GetAxis("Jump");
 
+            //Debug.Log(h + " "+ v +" " + b);
 
             if (!moveBack)
                 m_Car.Move(h, v, b, handbrake);

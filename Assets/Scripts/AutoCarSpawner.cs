@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class AutoCarSpawner : MonoBehaviour {
 
+    //public List<GameObject> autoCarList;
+    //    public List<GameObject> destinationList;
+
     public GameObject autoCarPrefab;
-    public GameObject destinationFlagObject;
+    //public List<GameObject> destinationFlagObject;
     public float spawnInernalMaxTime = 5.0f;
     public float spawnInernalMinTime = 1.0f;
 
@@ -62,6 +65,8 @@ public class AutoCarSpawner : MonoBehaviour {
 
     void spawnCar()
     {
+        //autoCarPrefab = autoCarList[0];
+
         if (autoCarPrefab == null)
         {
             return;
@@ -71,10 +76,6 @@ public class AutoCarSpawner : MonoBehaviour {
         insCar.transform.parent = null;
         spwawnAmount--;
         insCar.SetSpeed(spawnSpeed);
-        if (destinationFlagObject != null)
-        {
-            insCar.setTarget(destinationFlagObject.transform.position);
-        }
     }
 
     void OnTriggerEnter(Collider other)

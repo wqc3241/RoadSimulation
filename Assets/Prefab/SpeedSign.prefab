@@ -804,10 +804,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MainTexture:
-  - {fileID: 2100000, guid: 8838ce7e376b62d46bde8a349499e1f7, type: 2}
-  - {fileID: 2100000, guid: 185376f1014662249b4bb3dcc7079310, type: 2}
-  - {fileID: 2100000, guid: b5164ad6a5fecf0458284bac93de1842, type: 2}
+  - {fileID: 2100000, guid: e1c054db5fa5ec34799138121b14005e, type: 2}
+  - {fileID: 2100000, guid: 30e7354138c3dd44f9b9e2093e3c001a, type: 2}
+  - {fileID: 2100000, guid: 716e9aec094918b438b2b0f11323f992, type: 2}
   - {fileID: 2100000, guid: 75323b9c8b7c3b74ab34d5877f3053f4, type: 2}
   - {fileID: 2100000, guid: e5d85af1c273d154584d65470c727b31, type: 2}
-  - {fileID: 2100000, guid: 30e7354138c3dd44f9b9e2093e3c001a, type: 2}
-  - {fileID: 2100000, guid: e1c054db5fa5ec34799138121b14005e, type: 2}

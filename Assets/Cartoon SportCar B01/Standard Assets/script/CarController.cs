@@ -150,7 +150,7 @@ namespace UnityStandardAssets.Vehicles.Car
             //Debug.Log(m_Rigidbody.velocity.magnitude);
 
 
-            AccelInput = accel =  Mathf.Clamp(accel, 0, 1);
+            AccelInput = accel =  Mathf.Clamp(accel, 0, 100);
             BrakeInput = footbrake =  -1 * Mathf.Clamp(footbrake, -1, 0);
 
             //Debug.Log(AccelInput + " " + BrakeInput);
@@ -168,8 +168,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             SteerHelper();
 
-            ApplyDrive(accel, footbrake);
-
+            ApplyDrive(AccelInput, BrakeInput);
 
 
             CapSpeed();

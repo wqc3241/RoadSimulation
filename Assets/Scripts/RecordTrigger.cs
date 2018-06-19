@@ -25,10 +25,36 @@ public class RecordTrigger : MonoBehaviour {
     //output order:time speed, wheel, brake, acceleration
     private List<List<float>> allData = new List<List<float>>();
 
+    float h, v, b;
+
+    void Start()
+    {
+        if (LogitechGSDK.LogiIsConnected(0) == false)
+        {
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            v = CrossPlatformInputManager.GetAxis("Vertical");
+            b = CrossPlatformInputManager.GetAxis("Vertical");
+        }
+        else
+        {
+            LogitechGSDK.DIJOYSTATE2ENGINES rec;
+            rec = LogitechGSDK.LogiGetStateUnity(0);
 
 
-    // Use this for initialization
-    void Awake()
+            // pass the input to the car!
+            //h = CrossPlatformInputManager.GetAxis("Horizontal");
+
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            v = -(rec.lY + 32767);
+            b = rec.lRz - 32767;
+
+            //Debug.Log(h + " "+ v +" " + b);
+        }
+    }
+
+
+        // Use this for initialization
+        void Awake()
     {
         carRB = playerCar.GetComponent<Rigidbody>();
 
@@ -52,14 +78,6 @@ public class RecordTrigger : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        LogitechGSDK.DIJOYSTATE2ENGINES rec;
-        rec = LogitechGSDK.LogiGetStateUnity(0);
-
-        float h, v, b;
-        // pass the input to the car!
-        h = CrossPlatformInputManager.GetAxis("Horizontal");
-        v = -(rec.lY - 32767);
-        b = rec.lRz - 32767;
 
         if (recording && carRB)
         {

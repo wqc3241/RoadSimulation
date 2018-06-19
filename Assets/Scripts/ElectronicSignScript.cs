@@ -17,7 +17,7 @@ namespace ElectronicRoadSign
 		public int _TEXTURE_COLUMNS = 16;
 
 		// number of rows of characters on the texture
-		public int _TEXTURE_ROWS = 1;
+		public int _TEXTURE_ROWS = 3;
 
 		// the character height ( 180 / 2048 )
 		public  float _TEXTURE_PANEL_HEIGHT = 0.087890625f;
