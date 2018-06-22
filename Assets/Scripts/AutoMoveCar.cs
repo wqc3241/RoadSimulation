@@ -70,7 +70,7 @@ public class AutoMoveCar : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         //agent.SetDestination(tarPos);
         setTarget(tarPos);
-        moveSpeed = Random.Range(60.0f, 100.0f);
+        moveSpeed = Random.Range(40.0f, 80.0f);
 
         agent.speed = moveSpeed;
         ///to Implement

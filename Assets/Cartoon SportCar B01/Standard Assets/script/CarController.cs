@@ -147,13 +147,20 @@ namespace UnityStandardAssets.Vehicles.Car
 
             steering = Mathf.Clamp(steering, -1, 1);
 
+            if (LogitechGSDK.LogiIsConnected(0) == false)
+            {
+                AccelInput = Mathf.Clamp(accel, 0, 1);
+                BrakeInput = -1 * Mathf.Clamp(footbrake, -1, 0);
+            }
+
+            else
+            {
+                AccelInput = accel / 65534;
+                BrakeInput = -1 *(footbrake / 65534);
+            }
             //Debug.Log(m_Rigidbody.velocity.magnitude);
 
-
-            AccelInput = accel =  Mathf.Clamp(accel, 0, 100);
-            BrakeInput = footbrake =  -1 * Mathf.Clamp(footbrake, -1, 0);
-
-            //Debug.Log(AccelInput + " " + BrakeInput);
+            Debug.Log(AccelInput + " " + BrakeInput);
 
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
@@ -230,12 +237,12 @@ namespace UnityStandardAssets.Vehicles.Car
                     break;
 
                 case CarDriveType.FrontWheelDrive:
-                    thrustTorque = accel * (m_CurrentTorque / 2f);
+                    thrustTorque = accel * 100 * (m_CurrentTorque / 2f);
                     m_WheelColliders[0].motorTorque = m_WheelColliders[1].motorTorque = thrustTorque;
                     break;
 
                 case CarDriveType.RearWheelDrive:
-                    thrustTorque = accel * (m_CurrentTorque / 2f);
+                    thrustTorque = accel  * (m_CurrentTorque / 2f);
                     m_WheelColliders[2].motorTorque = m_WheelColliders[3].motorTorque = thrustTorque;
                     break;
 
