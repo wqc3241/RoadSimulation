@@ -160,7 +160,7 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             //Debug.Log(m_Rigidbody.velocity.magnitude);
 
-            Debug.Log(AccelInput + " " + BrakeInput);
+            //Debug.Log(AccelInput + " " + BrakeInput);
 
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 

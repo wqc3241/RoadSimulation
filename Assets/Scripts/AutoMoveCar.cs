@@ -38,7 +38,7 @@ public class AutoMoveCar : MonoBehaviour {
 
         initPos = transform.position;
         tarPos = DestinationList.transform.GetChild(cur).position;
-        Debug.Log(tarPos);
+        //Debug.Log(tarPos);
         agent = this.GetComponent<NavMeshAgent>();
         initSetUp();
         //Destroy(gameObject, existTime);

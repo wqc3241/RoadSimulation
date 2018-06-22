@@ -11,7 +11,7 @@ public class RecordTrigger : MonoBehaviour {
 
 
     private bool recording = false;
-    public GameObject playerCar;
+    private GameObject playerCar;
     private Rigidbody carRB;
     private int outputCount = 1;
 
@@ -27,37 +27,13 @@ public class RecordTrigger : MonoBehaviour {
 
     float h, v, b;
 
-    void Start()
-    {
-        if (LogitechGSDK.LogiIsConnected(0) == false)
-        {
-            h = CrossPlatformInputManager.GetAxis("Horizontal");
-            v = CrossPlatformInputManager.GetAxis("Vertical");
-            b = CrossPlatformInputManager.GetAxis("Vertical");
-        }
-        else
-        {
-            LogitechGSDK.DIJOYSTATE2ENGINES rec;
-            rec = LogitechGSDK.LogiGetStateUnity(0);
-
-
-            // pass the input to the car!
-            //h = CrossPlatformInputManager.GetAxis("Horizontal");
-
-            h = CrossPlatformInputManager.GetAxis("Horizontal");
-            v = -(rec.lY + 32767);
-            b = rec.lRz - 32767;
-
-            //Debug.Log(h + " "+ v +" " + b);
-        }
-    }
-
-
         // Use this for initialization
-        void Awake()
+    void Awake()
     {
-        carRB = playerCar.GetComponent<Rigidbody>();
+        playerCar = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log(playerCar);
 
+        carRB = playerCar.GetComponent<Rigidbody>();
         if (carRB == null)
             Debug.LogError("Error no rigbidbody attached to parent object");
 
@@ -78,6 +54,27 @@ public class RecordTrigger : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (LogitechGSDK.LogiIsConnected(0) == false)
+        {
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            v = CrossPlatformInputManager.GetAxis("Vertical");
+            b = CrossPlatformInputManager.GetAxis("Vertical");
+        }
+        else
+        {
+            LogitechGSDK.DIJOYSTATE2ENGINES rec;
+            rec = LogitechGSDK.LogiGetStateUnity(0);
+
+
+            // pass the input to the car!
+            //h = CrossPlatformInputManager.GetAxis("Horizontal");
+
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            v = Mathf.Abs(rec.lY - 32767);
+            b = -Mathf.Abs(rec.lRz - 32767);
+
+            //Debug.Log(h + " "+ v +" " + b);
+        }
 
         if (recording && carRB)
         {
@@ -143,12 +140,12 @@ public class RecordTrigger : MonoBehaviour {
 
     public float getBrake(float brake)
     {
-        return (-brake/65535*100);
+        return (brake/65534*100);
     }
 
     public float getAcceleration(float acc)
     {
-        return (acc/65535*100);
+        return (acc/65534*100);
     }
 
 
@@ -182,6 +179,8 @@ public class RecordTrigger : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            playerCar = other.gameObject;
+            Awake();
             startRecord();
         }
     }
