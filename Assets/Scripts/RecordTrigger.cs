@@ -31,7 +31,7 @@ public class RecordTrigger : MonoBehaviour {
     void Awake()
     {
         playerCar = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(playerCar);
+        //Debug.Log(playerCar);
 
         carRB = playerCar.GetComponent<Rigidbody>();
         if (carRB == null)
