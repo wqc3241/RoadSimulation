@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 namespace UnityStandardAssets.Vehicles.Car
 {
     internal enum CarDriveType
@@ -145,17 +146,17 @@ namespace UnityStandardAssets.Vehicles.Car
 
             //clamp input values
 
-            steering = Mathf.Clamp(steering, -1, 1);
-
             if (LogitechGSDK.LogiIsConnected(0) == false)
             {
+                steering = Mathf.Clamp(steering, -1, 1);
                 AccelInput = Mathf.Clamp(accel, 0, 1);
                 BrakeInput = -1 * Mathf.Clamp(footbrake, -1, 0);
             }
 
             else
             {
-                AccelInput = accel / 65534;
+                steering = steering / 32767;
+                AccelInput = accel / 32767;
                 BrakeInput = -1 *(footbrake / 65534);
             }
             //Debug.Log(m_Rigidbody.velocity.magnitude);

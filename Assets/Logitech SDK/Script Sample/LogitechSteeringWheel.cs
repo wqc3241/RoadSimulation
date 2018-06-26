@@ -33,7 +33,7 @@ public class LogitechSteeringWheel : MonoBehaviour {
         forcesLabel += "Set example controller properties : PageUp\n";
         forcesLabel += "Play Leds : P\n";
         activeForceAndEffect = new string[9];
-		//Debug.Log(LogitechGSDK.LogiSteeringInitialize(false));
+		Debug.Log(LogitechGSDK.LogiSteeringInitialize(false));
         
 
 	}
@@ -45,14 +45,12 @@ public class LogitechSteeringWheel : MonoBehaviour {
         actualState = GUI.TextArea(new Rect(410, 10, 300, 200), actualState, 1000);
         buttonStatus = GUI.TextArea(new Rect(720, 10, 300, 200), buttonStatus, 1000);
         GUI.Label(new Rect(10, 400, 800, 400), forcesLabel);
-        
     }
 
 	// Update is called once per frame
 	void Update () {
 		//All the test functions are called on the first device plugged in(index = 0)
 		if(LogitechGSDK.LogiUpdate() && LogitechGSDK.LogiIsConnected(0)){
-
             //CONTROLLER PROPERTIES
             StringBuilder deviceName = new StringBuilder(256);
             LogitechGSDK.LogiGetFriendlyProductName(0, deviceName, 256);
