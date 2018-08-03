@@ -20,6 +20,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
         void Start()
         {
+            LogitechGSDK.LogiHasForceFeedback(100);
             m_Car.Move(0, 50, 0, 0);
         }
 
@@ -69,7 +70,9 @@ namespace UnityStandardAssets.Vehicles.Car
             else
             {
                 LogitechGSDK.DIJOYSTATE2ENGINES rec;
+                LogitechGSDK.LogiPlayDamperForce(0, 50);
                 rec = LogitechGSDK.LogiGetStateUnity(0);
+                
 
                 // pass the input to the car!
                 //h = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -88,7 +91,7 @@ namespace UnityStandardAssets.Vehicles.Car
 #if !MOBILE_INPUT
             float handbrake = CrossPlatformInputManager.GetAxis("Jump");
 
-            Debug.Log(h + " "+ v +" " + b);
+            //Debug.Log(h + " "+ v +" " + b);
 
             if (!moveBack)
                 m_Car.Move(h, v, b, handbrake);

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SimulatorController : MonoBehaviour {
 
@@ -46,6 +48,12 @@ public class SimulatorController : MonoBehaviour {
             mainCamera.enabled = !mainCamera.enabled;
             firstPerson.enabled = !firstPerson.enabled;
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene("Scene_Yubing_stright");
+        }
+
         var car_pos = car.transform.position;
         if (car_pos.z > 470.0)
         {

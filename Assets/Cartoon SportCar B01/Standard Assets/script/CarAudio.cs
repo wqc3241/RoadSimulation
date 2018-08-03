@@ -96,7 +96,7 @@ namespace UnityStandardAssets.Vehicles.Car
             }
 
             // start the sound if not playing and it is nearer than the maximum distance
-            if (!m_StartedSound && camDist < maxRolloffDistance*maxRolloffDistance)
+            if (!m_StartedSound && camDist <= maxRolloffDistance*maxRolloffDistance)
             {
                 StartSound();
             }
