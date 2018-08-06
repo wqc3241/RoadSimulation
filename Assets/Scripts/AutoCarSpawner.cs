@@ -14,7 +14,7 @@ public class AutoCarSpawner : MonoBehaviour {
 
     [Tooltip("All Spped are in MPH")]
     public float minSpeed = 55.0f;
-    public float maxSpeed = 85.0f;
+    public float maxSpeed = 70.0f;
     public float speedDiff = 10.0f;
 
     [Tooltip("Number of Car will be spawned in total")]

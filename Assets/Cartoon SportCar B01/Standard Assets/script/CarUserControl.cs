@@ -70,14 +70,14 @@ namespace UnityStandardAssets.Vehicles.Car
             else
             {
                 LogitechGSDK.DIJOYSTATE2ENGINES rec;
-                LogitechGSDK.LogiPlayDamperForce(0, 50);
+                LogitechGSDK.LogiPlayDamperForce(0, 100);
                 rec = LogitechGSDK.LogiGetStateUnity(0);
                 
 
                 // pass the input to the car!
                 //h = CrossPlatformInputManager.GetAxis("Horizontal");
 
-                h = (1.5f * rec.lX);
+                h = (0.7f* rec.lX);
                 v = Mathf.Abs(rec.lY - 32767);
                 b = -Mathf.Abs(rec.lRz - 32767);
 
