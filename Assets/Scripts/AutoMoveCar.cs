@@ -10,6 +10,9 @@ public class AutoMoveCar : MonoBehaviour {
 
     int cur = 0;
 
+    public float minSpeed = 10f;
+    public float maxSpeed = 40f;
+
     public bool moveback = false;
     public float moveDistance = 2000f;
     public float existTime = 10.0f;
@@ -70,7 +73,7 @@ public class AutoMoveCar : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         //agent.SetDestination(tarPos);
         setTarget(tarPos);
-        moveSpeed = Random.Range(40.0f, 80.0f);
+        moveSpeed = Random.Range(minSpeed, maxSpeed);
 
         agent.speed = moveSpeed;
         ///to Implement
@@ -94,29 +97,29 @@ public class AutoMoveCar : MonoBehaviour {
     */
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SpawnedCar"))
+        if (other.CompareTag("SpawnedCar") || other.CompareTag("Player"))
         {
             SetSpeed(AutoCarCollisionAvoidSpeed);
         }
-        else if (other.CompareTag("Player"))
-        {
-            if (other.transform.position.z - transform.position.z > 0 && rb.velocity.z > 0)
-            {
-                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() - PlayerCarCollisionAvoidSpeedDiff);
-            }
-            else if (other.transform.position.z - transform.position.z > 0 && rb.velocity.z < 0)
-            {
-                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() + PlayerCarCollisionAvoidSpeedDiff);
-            }
-            else if (other.transform.position.z - transform.position.z < 0 && rb.velocity.z < 0)
-            {
-                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() - PlayerCarCollisionAvoidSpeedDiff);
-            }
-            else if (other.transform.position.z - transform.position.z < 0 && rb.velocity.z > 0)
-            {
-                SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() + PlayerCarCollisionAvoidSpeedDiff);
-            }
-        }
+        //else if (other.CompareTag("Player"))
+        //{
+        //    if (other.transform.position.z - transform.position.z > 0 && rb.velocity.z > 0)
+        //    {
+        //        SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() - PlayerCarCollisionAvoidSpeedDiff);
+        //    }
+        //    else if (other.transform.position.z - transform.position.z > 0 && rb.velocity.z < 0)
+        //    {
+        //        SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() + PlayerCarCollisionAvoidSpeedDiff);
+        //    }
+        //    else if (other.transform.position.z - transform.position.z < 0 && rb.velocity.z < 0)
+        //    {
+        //        SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() - PlayerCarCollisionAvoidSpeedDiff);
+        //    }
+        //    else if (other.transform.position.z - transform.position.z < 0 && rb.velocity.z > 0)
+        //    {
+        //        SetSpeed(other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed() + PlayerCarCollisionAvoidSpeedDiff);
+        //    }
+        //}
     }
 
 
