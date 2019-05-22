@@ -248,7 +248,7 @@ namespace UnityStandardAssets.Vehicles.Car
                     break;
 
             }
-
+            Debug.Log(footbrake);
             for (int i = 0; i < 4; i++)
             {
 
@@ -258,7 +258,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 }
                 else if (footbrake > 0)
                 {
-                    m_WheelColliders[i].brakeTorque = 0f;
+                    m_WheelColliders[i].brakeTorque = 0;
                     //m_WheelColliders[i].motorTorque = -m_ReverseTorque * footbrake;
                 }
             }

@@ -38,16 +38,16 @@ namespace UnityStandardAssets.Vehicles.Car
             newpos = transform.position;
             fwd = transform.forward;
             movement = newpos - prevpos;
-            if (Vector3.Dot(fwd, movement) < 0)
-            {
-                moveBack = true;
-                //print("Moving backwards");
-            }
-            else
-            {
-                moveBack = false;
-                //print("Moving forwards");
-            }
+            //if (Vector3.Dot(fwd, movement) < 0)
+            //{
+            //    moveBack = true;
+            //    //print("Moving backwards");
+            //}
+            //else
+            //{
+            //    moveBack = false;
+            //    //print("Moving forwards");
+            //}
 
             //Vehicle Control
 
@@ -88,31 +88,50 @@ namespace UnityStandardAssets.Vehicles.Car
                 v = Mathf.Abs(rec.lY - 32767);
                 b = -Mathf.Abs(rec.lRz - 32767);
 
-                if (h < .05f && h > -.05f)
+                if (h < .03f && h > -.053)
                 {
                     h = 0;
                 }
 
-                if (v < 10000)
+                if (v < 20)
                 {
                     v = 0;
                 }
 
-                UpdateSteeringWheelRotation(h);
-
-                if (rec.rgbButtons[7] == 128)
+                if (v == 0 & rec.rgbButtons[5] == 128)
                 {
-                    m_Car.transform.Rotate(Vector3.up * 90);
+                    moveBack = true;
+
+                    //Debug.Log(moveBack);
                 }
 
+                if (v == 0 & rec.rgbButtons[4] == 128)
+                {
+                    moveBack = false;
+
+                    //Debug.Log(moveBack);
+                }
+
+                UpdateSteeringWheelRotation(h);
+
+                //if (rec.rgbButtons[7] == 128)
+                //{
+                //    m_Car.transform.Rotate(Vector3.up * 90);
+                //}
+
                 //Debug.Log(h + " " + v + " " + b);
+ 
 
                 if (!moveBack)
                     m_Car.Move(h * 32767f, v, b, handbrake);
                 else
                 {
-                    m_Car.Move(h * 32767f, v, 0, 0);
+                    m_Car.Move(h * 32767f, -v, b, handbrake);
                 }
+
+                //Debug.Log(b);
+                //Debug.Log(v);
+
             }
 
 
