@@ -19,6 +19,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
         bool moveBack = false;
     
+
         void Start()
         {
             m_Car = GetComponent<CarController>();
@@ -52,12 +53,14 @@ namespace UnityStandardAssets.Vehicles.Car
 
             float handbrake = CrossPlatformInputManager.GetAxis("Jump");
 
+            Debug.Log(LogitechGSDK.LogiIsConnected(0));
 
             if (LogitechGSDK.LogiIsConnected(0) == false)
             {
                 h = CrossPlatformInputManager.GetAxis("Horizontal");
                 v = CrossPlatformInputManager.GetAxis("Vertical");
                 b = CrossPlatformInputManager.GetAxis("Vertical");
+                Debug.Log(v);
 
                 if (Input.GetKeyDown("r"))
                 {
@@ -73,8 +76,13 @@ namespace UnityStandardAssets.Vehicles.Car
             }
             else
             {
+
+                LogitechGSDK.LogiPlayDamperForce(0, 50);
+                LogitechGSDK.LogiPlayConstantForce(0,-50);
+                LogitechGSDK.LogiPlaySpringForce(0, 0, 50, 50);
                 LogitechGSDK.DIJOYSTATE2ENGINES rec;
                 rec = LogitechGSDK.LogiGetStateUnity(0);
+
 
                 h = (float)rec.lX / (float)LIC;
                 v = Mathf.Abs(rec.lY - 32767);

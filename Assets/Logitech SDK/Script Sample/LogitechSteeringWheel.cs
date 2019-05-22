@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Text;
 
-public class LogitechSteeringWheel : MonoBehaviour {
+public class LogitechSteeringWheel : MonoBehaviour
+{
 
     LogitechGSDK.LogiControllerPropertiesData properties;
     private string actualState;
@@ -12,8 +13,9 @@ public class LogitechSteeringWheel : MonoBehaviour {
     private string forcesLabel;
     string[] activeForceAndEffect;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         activeForces = "";
         propertiesEdit = "";
         actualState = "";
@@ -33,10 +35,13 @@ public class LogitechSteeringWheel : MonoBehaviour {
         forcesLabel += "Set example controller properties : PageUp\n";
         forcesLabel += "Play Leds : P\n";
         activeForceAndEffect = new string[9];
-		//Debug.Log(LogitechGSDK.LogiSteeringInitialize(false));
-        
+        Debug.Log("SteeringInit:" + LogitechGSDK.LogiSteeringInitialize(false));
+    }
 
-	}
+    void OnApplicationQuit()
+    {
+        Debug.Log("SteeringShutdown:" + LogitechGSDK.LogiSteeringShutdown());
+    }
 
     void OnGUI()
     {
@@ -47,14 +52,17 @@ public class LogitechSteeringWheel : MonoBehaviour {
         GUI.Label(new Rect(10, 400, 800, 400), forcesLabel);
     }
 
-	// Update is called once per frame
-	void Update () {
-		//All the test functions are called on the first device plugged in(index = 0)
-		if(LogitechGSDK.LogiUpdate() && LogitechGSDK.LogiIsConnected(0)){
+    // Update is called once per frame
+    void Update()
+    {
+        //All the test functions are called on the first device plugged in(index = 0)
+        if (LogitechGSDK.LogiUpdate() && LogitechGSDK.LogiIsConnected(0))
+        {
+
             //CONTROLLER PROPERTIES
             StringBuilder deviceName = new StringBuilder(256);
             LogitechGSDK.LogiGetFriendlyProductName(0, deviceName, 256);
-			propertiesEdit = "Current Controller : "+ deviceName + "\n";
+            propertiesEdit = "Current Controller : " + deviceName + "\n";
             propertiesEdit += "Current controller properties : \n\n";
             LogitechGSDK.LogiControllerPropertiesData actualProperties = new LogitechGSDK.LogiControllerPropertiesData();
             LogitechGSDK.LogiGetCurrentControllerProperties(0, ref actualProperties);
@@ -67,7 +75,7 @@ public class LogitechSteeringWheel : MonoBehaviour {
             propertiesEdit += "wheelRange = " + actualProperties.wheelRange + "\n";
             propertiesEdit += "gameSettingsEnabled = " + actualProperties.gameSettingsEnabled + "\n";
             propertiesEdit += "allowGameSettings = " + actualProperties.allowGameSettings + "\n";
-                
+
             //CONTROLLER STATE
             actualState = "Steering wheel current state : \n\n";
             LogitechGSDK.DIJOYSTATE2ENGINES rec;
@@ -104,7 +112,7 @@ public class LogitechSteeringWheel : MonoBehaviour {
                 }
 
             }
-            
+
             /* THIS AXIS ARE NEVER REPORTED BY LOGITECH CONTROLLERS 
              * 
              * actualState += "x-axis velocity :" + rec.lVX + "\n";
@@ -137,27 +145,28 @@ public class LogitechSteeringWheel : MonoBehaviour {
             string shifterString = "";
             if (shifterTipe == 1) shifterString = "Gated";
             else if (shifterTipe == 0) shifterString = "Sequential";
-            else  shifterString = "Unknown";
+            else shifterString = "Unknown";
             actualState += "\nSHIFTER MODE:" + shifterString;
 
-  
+
 
 
             // FORCES AND EFFECTS 
             activeForces = "Active forces and effects :\n";
 
             //Spring Force -> S
-            if (Input.GetKeyUp(KeyCode.S)){
-               if (LogitechGSDK.LogiIsPlaying(0, LogitechGSDK.LOGI_FORCE_SPRING))
-               {
-                   LogitechGSDK.LogiStopSpringForce(0);
-                   activeForceAndEffect[0] = "";
-               }
-               else
-               {
-                   LogitechGSDK.LogiPlaySpringForce(0, 50, 50, 50);
-                   activeForceAndEffect[0] = "Spring Force\n ";
-               }
+            if (Input.GetKeyUp(KeyCode.S))
+            {
+                if (LogitechGSDK.LogiIsPlaying(0, LogitechGSDK.LOGI_FORCE_SPRING))
+                {
+                    LogitechGSDK.LogiStopSpringForce(0);
+                    activeForceAndEffect[0] = "";
+                }
+                else
+                {
+                    LogitechGSDK.LogiPlaySpringForce(0, 50, 50, 50);
+                    activeForceAndEffect[0] = "Spring Force\n ";
+                }
             }
 
             //Constant Force -> C
@@ -217,7 +226,7 @@ public class LogitechSteeringWheel : MonoBehaviour {
                 }
 
             }
-            
+
             //Bumpy Road Effect-> B
             if (Input.GetKeyUp(KeyCode.B))
             {
@@ -322,16 +331,17 @@ public class LogitechSteeringWheel : MonoBehaviour {
                 activeForces += activeForceAndEffect[i];
             }
 
-		}
-		else if(!LogitechGSDK.LogiIsConnected(0))
-		{
-			 actualState = "PLEASE PLUG IN A STEERING WHEEL OR A FORCE FEEDBACK CONTROLLER";
-		}
-		else{
-			actualState = "THIS WINDOW NEEDS TO BE IN FOREGROUND IN ORDER FOR THE SDK TO WORK PROPERLY";
-		}
-	}
+        }
+        else if (!LogitechGSDK.LogiIsConnected(0))
+        {
+            actualState = "PLEASE PLUG IN A STEERING WHEEL OR A FORCE FEEDBACK CONTROLLER";
+        }
+        else
+        {
+            actualState = "THIS WINDOW NEEDS TO BE IN FOREGROUND IN ORDER FOR THE SDK TO WORK PROPERLY";
+        }
+    }
 
-    
+
 
 }
