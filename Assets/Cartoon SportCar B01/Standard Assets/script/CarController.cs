@@ -127,7 +127,7 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
 
-        public void Move(float steering, float accel, float footbrake, float handbrake)
+        public void Move(float steering, float accel, float footbrake, float handbrake, bool direction)
         {
             if (m_Rigidbody.velocity.magnitude < 0.0001f)
             {
@@ -176,7 +176,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             SteerHelper();
 
-            ApplyDrive(AccelInput, BrakeInput);
+            ApplyDrive(AccelInput, BrakeInput, direction);
 
 
             CapSpeed();
@@ -223,7 +223,7 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
 
-        private void ApplyDrive(float accel, float footbrake)
+        private void ApplyDrive(float accel, float footbrake, bool direction)
         {
 
             float thrustTorque;
@@ -248,18 +248,19 @@ namespace UnityStandardAssets.Vehicles.Car
                     break;
 
             }
-            Debug.Log(footbrake);
+            //Debug.Log(footbrake);
             for (int i = 0; i < 4; i++)
             {
 
-                if (Vector3.Angle(transform.forward, m_Rigidbody.velocity) < 50f)
+                //if (Vector3.Angle(transform.forward, m_Rigidbody.velocity) < 50f)
+                if (direction == false)
                 {
                     m_WheelColliders[i].brakeTorque = m_BrakeTorque*footbrake;
                 }
-                else if (footbrake > 0)
+                else if (direction == true)
                 {
                     m_WheelColliders[i].brakeTorque = 0;
-                    //m_WheelColliders[i].motorTorque = -m_ReverseTorque * footbrake;
+                    m_WheelColliders[i].motorTorque = -m_ReverseTorque * footbrake;
                 }
             }
         }

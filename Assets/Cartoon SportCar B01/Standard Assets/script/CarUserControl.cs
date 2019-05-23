@@ -24,7 +24,7 @@ namespace UnityStandardAssets.Vehicles.Car
         {
             m_Car = GetComponent<CarController>();
             LogitechGSDK.LogiPlayConstantForce(0,100);
-            m_Car.Move(0, 50, 0, 0);
+            m_Car.Move(0, 50, 0, 0,false);
         }
 
         //private void Awake()
@@ -53,7 +53,7 @@ namespace UnityStandardAssets.Vehicles.Car
 
             float handbrake = CrossPlatformInputManager.GetAxis("Jump");
 
-            Debug.Log(LogitechGSDK.LogiIsConnected(0));
+            //Debug.Log(LogitechGSDK.LogiIsConnected(0));
 
             if (LogitechGSDK.LogiIsConnected(0) == false)
             {
@@ -67,10 +67,10 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_Car.transform.Rotate(Vector3.up * 90);
                 }
                 if (!moveBack)
-                    m_Car.Move(h, v, b, handbrake);
+                    m_Car.Move(h, v, b, handbrake, moveBack);
                 else
                 {
-                    m_Car.Move(h, v, 0, 0);
+                    m_Car.Move(h, v, 0, 0, moveBack);
                 }
 
             }
@@ -88,7 +88,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 v = Mathf.Abs(rec.lY - 32767);
                 b = -Mathf.Abs(rec.lRz - 32767);
 
-                if (h < .03f && h > -.053)
+                if (h < .02f && h > -.02f)
                 {
                     h = 0;
                 }
@@ -98,18 +98,18 @@ namespace UnityStandardAssets.Vehicles.Car
                     v = 0;
                 }
 
-                if (v == 0 & rec.rgbButtons[5] == 128)
+                if (rec.rgbButtons[5] == 128)
                 {
                     moveBack = true;
 
-                    //Debug.Log(moveBack);
+                    Debug.Log(moveBack);
                 }
 
-                if (v == 0 & rec.rgbButtons[4] == 128)
+                if (rec.rgbButtons[4] == 128)
                 {
                     moveBack = false;
 
-                    //Debug.Log(moveBack);
+                    Debug.Log(moveBack);
                 }
 
                 UpdateSteeringWheelRotation(h);
@@ -123,10 +123,10 @@ namespace UnityStandardAssets.Vehicles.Car
  
 
                 if (!moveBack)
-                    m_Car.Move(h * 32767f, v, b, handbrake);
+                    m_Car.Move(h * 32767f, v, b, handbrake,moveBack);
                 else
                 {
-                    m_Car.Move(h * 32767f, -v, b, handbrake);
+                    m_Car.Move(h * 32767f, -v, b, handbrake, moveBack);
                 }
 
                 //Debug.Log(b);
