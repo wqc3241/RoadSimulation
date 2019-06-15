@@ -60,7 +60,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 h = CrossPlatformInputManager.GetAxis("Horizontal");
                 v = CrossPlatformInputManager.GetAxis("Vertical");
                 b = CrossPlatformInputManager.GetAxis("Vertical");
-                Debug.Log(v);
+                //Debug.Log(v);
 
                 if (Input.GetKeyDown("r"))
                 {

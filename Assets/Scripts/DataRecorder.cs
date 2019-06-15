@@ -49,7 +49,7 @@ public class DataRecorder : MonoBehaviour {
     {
         if (recording && carRB)
         {
-            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(), getBrake(), getAcceleration()});
+            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(), getBrake(), getAcceleration(), getPositionX(), getPositionY()});
         }
     }
 
@@ -66,7 +66,7 @@ public class DataRecorder : MonoBehaviour {
         outputCount++;
 
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Time        " + "Speed       " + "Wheel       " +  "Brake       " + "Acceleration ");
+        writer.WriteLine("Time        " + "Speed       " + "Wheel       " +  "Brake       " + "Acceleration " + "X " + "Y ");
 
         foreach (List<float> row in allData)
         {
@@ -122,6 +122,18 @@ public class DataRecorder : MonoBehaviour {
         return 0;
     }
 
+    public float getPositionX()
+    {
+        float X = carRB.transform.position.x;
+        return X;
+    }
+
+    public float getPositionY()
+    {
+        float Y = carRB.transform.position.y;
+        return Y;
+    }
+    
 
     /// <summary>
     /// public method for other script to called to store or start record data

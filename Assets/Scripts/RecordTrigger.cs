@@ -78,7 +78,7 @@ public class RecordTrigger : MonoBehaviour {
 
         if (recording && carRB)
         {
-            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(h), getBrake(b), getAcceleration(v) });
+            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(h), getBrake(b), getAcceleration(v), getPositionX(), getPositionY() });
         }
     }
 
@@ -95,7 +95,7 @@ public class RecordTrigger : MonoBehaviour {
         outputCount++;
 
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Time        " + "Speed       " + "Wheel       " + "Brake       " + "Acceleration ");
+        writer.WriteLine("Time        " + "Speed       " + "Wheel       " + "Brake       " + "Acceleration " + "X           " + "Y ");
 
         foreach (List<float> row in allData)
         {
@@ -146,6 +146,18 @@ public class RecordTrigger : MonoBehaviour {
     public float getAcceleration(float acc)
     {
         return (acc/65534*100);
+    }
+
+    public float getPositionX()
+    {
+        float X = carRB.transform.position.x;
+        return X;
+    }
+
+    public float getPositionY()
+    {
+        float Y = carRB.transform.position.y;
+        return Y;
     }
 
 
