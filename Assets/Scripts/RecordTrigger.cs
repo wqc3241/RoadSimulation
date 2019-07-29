@@ -78,7 +78,7 @@ public class RecordTrigger : MonoBehaviour {
 
         if (recording && carRB)
         {
-            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(h), getBrake(b), getAcceleration(v), getPositionX(), getPositionY() });
+            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(h), getBrake(b), getAcceleration(v), getPositionX(), getPositionZ() });
         }
     }
 
