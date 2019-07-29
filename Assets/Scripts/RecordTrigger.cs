@@ -95,7 +95,7 @@ public class RecordTrigger : MonoBehaviour {
         outputCount++;
 
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Time        " + "Speed       " + "Wheel       " + "Brake       " + "Acceleration " + "X           " + "Y ");
+        writer.WriteLine("Time        " + "Speed       " + "Wheel       " + "Brake       " + "Acceleration " + "X           " + "Z ");
 
         foreach (List<float> row in allData)
         {
@@ -154,10 +154,10 @@ public class RecordTrigger : MonoBehaviour {
         return X;
     }
 
-    public float getPositionY()
+    public float getPositionZ()
     {
-        float Y = carRB.transform.position.y;
-        return Y;
+        float Z = carRB.transform.position.z;
+        return Z;
     }
 
 
