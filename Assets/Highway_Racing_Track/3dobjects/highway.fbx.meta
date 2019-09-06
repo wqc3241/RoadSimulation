@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: ff69353130ce95b41b18422a36ea1087
+timeCreated: 1526086264
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: blocks
+    100002: Camera
+    100004: colmesh
+    100006: columns_part1
+    100008: columns_part2
+    100010: columns_part3
+    100012: columns_part4
+    100014: columns_part5
+    100016: columns_part6
+    100018: columns_part7
+    100020: columns_part8
+    100022: //RootNode
+    100024: industrial
+    100026: landscape_main
+    100028: road_part1
+    100030: road_part1_MeshPart0
+    100032: road_part1_MeshPart1
+    100034: road_part2
+    100036: road_part3
+    100038: road_part4
+    100040: road_part5
+    100042: signs
+    100044: skyscrapers
+    100046: tunnel
+    400000: blocks
+    400002: Camera
+    400004: colmesh
+    400006: columns_part1
+    400008: columns_part2
+    400010: columns_part3
+    400012: columns_part4
+    400014: columns_part5
+    400016: columns_part6
+    400018: columns_part7
+    400020: columns_part8
+    400022: //RootNode
+    400024: industrial
+    400026: landscape_main
+    400028: road_part1
+    400030: road_part1_MeshPart0
+    400032: road_part1_MeshPart1
+    400034: road_part2
+    400036: road_part3
+    400038: road_part4
+    400040: road_part5
+    400042: signs
+    400044: skyscrapers
+    400046: tunnel
+    2300000: blocks
+    2300002: colmesh
+    2300004: columns_part1
+    2300006: columns_part2
+    2300008: columns_part3
+    2300010: columns_part4
+    2300012: columns_part5
+    2300014: columns_part6
+    2300016: columns_part7
+    2300018: columns_part8
+    2300020: industrial
+    2300022: landscape_main
+    2300024: road_part1_MeshPart0
+    2300026: road_part1_MeshPart1
+    2300028: road_part2
+    2300030: road_part3
+    2300032: road_part4
+    2300034: road_part5
+    2300036: signs
+    2300038: skyscrapers
+    2300040: tunnel
+    3300000: blocks
+    3300002: colmesh
+    3300004: columns_part1
+    3300006: columns_part2
+    3300008: columns_part3
+    3300010: columns_part4
+    3300012: columns_part5
+    3300014: columns_part6
+    3300016: columns_part7
+    3300018: columns_part8
+    3300020: industrial
+    3300022: landscape_main
+    3300024: road_part1_MeshPart0
+    3300026: road_part1_MeshPart1
+    3300028: road_part2
+    3300030: road_part3
+    3300032: road_part4
+    3300034: road_part5
+    3300036: signs
+    3300038: skyscrapers
+    3300040: tunnel
+    4300000: skyscrapers
+    4300002: landscape_main
+    4300004: road_part5
+    4300006: road_part4
+    4300008: road_part1_MeshPart0
+    4300010: road_part1_MeshPart1
+    4300012: road_part2
+    4300014: road_part3
+    4300016: columns_part3
+    4300018: columns_part2
+    4300020: columns_part4
+    4300022: columns_part5
+    4300024: columns_part8
+    4300026: columns_part6
+    4300028: columns_part7
+    4300030: columns_part1
+    4300032: blocks
+    4300034: tunnel
+    4300036: signs
+    4300038: industrial
+    4300040: colmesh
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 41
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

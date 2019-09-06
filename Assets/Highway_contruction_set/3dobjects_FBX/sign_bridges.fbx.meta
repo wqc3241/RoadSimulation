@@ -1,9 +1,44 @@
 fileFormatVersion: 2
 guid: 4d7997d8b9a922246bca3e95c7053219
-timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
+    100000: Camera
+    100002: double_lightsign_2lanes
+    100004: double_lightsign_3anes
+    100006: double_sign_2lanes
+    100008: double_sign_3lanes
+    100010: //RootNode
+    100012: single_lightsign_2lanes
+    100014: single_lightsign_3lanes
+    100016: single_sign_2lanes
+    100018: single_sign_3lanes
+    400000: Camera
+    400002: double_lightsign_2lanes
+    400004: double_lightsign_3anes
+    400006: double_sign_2lanes
+    400008: double_sign_3lanes
+    400010: //RootNode
+    400012: single_lightsign_2lanes
+    400014: single_lightsign_3lanes
+    400016: single_sign_2lanes
+    400018: single_sign_3lanes
+    2300000: double_lightsign_2lanes
+    2300002: double_lightsign_3anes
+    2300004: double_sign_2lanes
+    2300006: double_sign_3lanes
+    2300008: single_lightsign_2lanes
+    2300010: single_lightsign_3lanes
+    2300012: single_sign_2lanes
+    2300014: single_sign_3lanes
+    3300000: double_lightsign_2lanes
+    3300002: double_lightsign_3anes
+    3300004: double_sign_2lanes
+    3300006: double_sign_3lanes
+    3300008: single_lightsign_2lanes
+    3300010: single_lightsign_3lanes
+    3300012: single_sign_2lanes
+    3300014: single_sign_3lanes
     4300000: double_sign_2lanes
     4300002: single_sign_2lanes
     4300004: double_sign_3lanes
@@ -12,7 +47,48 @@ ModelImporter:
     4300010: single_lightsign_2lanes
     4300012: double_lightsign_3anes
     4300014: single_lightsign_3lanes
-  externalObjects: {}
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: concrete
+    second: {fileID: 2100000, guid: 4622078a03e6ce84cbd71fcc21226968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal 01
+    second: {fileID: 2100000, guid: 26498ce99e698b846bad73ab452ec69d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal 02
+    second: {fileID: 2100000, guid: b789b9aac6268b14e9402222f97dca00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal 03
+    second: {fileID: 2100000, guid: 4dc7596bb0fbfb1408428403204fe6fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal 04
+    second: {fileID: 2100000, guid: 1fff8c02226422d46b419c9daaf8831d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: signs front 01
+    second: {fileID: 2100000, guid: 4bd36541adeae7b4e99f931b6e9fd54b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: signs front 02
+    second: {fileID: 2100000, guid: 9f7f8986e7bb00449b95e91102ff87ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: signs front 02 illum
+    second: {fileID: 2100000, guid: 8123a55e96d07324ca3c7e72f2560009, type: 2}
   materials:
     importMaterials: 1
     materialName: 2

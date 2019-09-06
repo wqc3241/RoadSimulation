@@ -1,9 +1,176 @@
 fileFormatVersion: 2
 guid: 912f35892a163f7479def60beaebe33b
-timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
+    100000: Camera
+    100002: fade_style1_style2_2lanes
+    100004: fade_style1_style2_3lanes
+    100006: fade_style1_style3_2lanes
+    100008: fade_style1_style3_3lanes
+    100010: fade_style2_style3_2lanes
+    100012: fade_style2_style3_3lanes
+    100014: //RootNode
+    100016: style1_2lanes_base
+    100018: style1_2lanes_curve_15degrees
+    100020: style1_2lanes_curve_30degrees
+    100022: style1_2lanes_exits
+    100024: style1_2lanes_middlepart_signs
+    100026: style1_2lanes_parkingspace
+    100028: style1_3anes_base
+    100030: style1_3lanes_curve_15degrees
+    100032: style1_3lanes_curve_30degrees
+    100034: style1_3lanes_exits
+    100036: style1_3lanes_middlepart_signs
+    100038: style1_3lanes_parkingspace
+    100040: style1_fade_2_to_3lanes
+    100042: style2_2lanes_base
+    100044: style2_2lanes_curve_15degrees
+    100046: style2_2lanes_curve_30degrees
+    100048: style2_2lanes_exits
+    100050: style2_2lanes_parkingspace
+    100052: style2_3anes_base
+    100054: style2_3lanes_curve_15degrees
+    100056: style2_3lanes_curve_30degrees
+    100058: style2_3lanes_exits
+    100060: style2_3lanes_parkingspace
+    100062: style2_fade_2_to_3lanes
+    100064: style3_2lanes_base
+    100066: style3_2lanes_curve_15degrees
+    100068: style3_2lanes_curve_30degrees
+    100070: style3_2lanes_exits
+    100072: style3_2lanes_parkingspace
+    100074: style3_3anes_base
+    100076: style3_3lanes_curve_15degrees
+    100078: style3_3lanes_curve_30degrees
+    100080: style3_3lanes_exits
+    100082: style3_3lanes_parkingspace
+    100084: style3_fade_2_to_3lanes
+    400000: Camera
+    400002: fade_style1_style2_2lanes
+    400004: fade_style1_style2_3lanes
+    400006: fade_style1_style3_2lanes
+    400008: fade_style1_style3_3lanes
+    400010: fade_style2_style3_2lanes
+    400012: fade_style2_style3_3lanes
+    400014: //RootNode
+    400016: style1_2lanes_base
+    400018: style1_2lanes_curve_15degrees
+    400020: style1_2lanes_curve_30degrees
+    400022: style1_2lanes_exits
+    400024: style1_2lanes_middlepart_signs
+    400026: style1_2lanes_parkingspace
+    400028: style1_3anes_base
+    400030: style1_3lanes_curve_15degrees
+    400032: style1_3lanes_curve_30degrees
+    400034: style1_3lanes_exits
+    400036: style1_3lanes_middlepart_signs
+    400038: style1_3lanes_parkingspace
+    400040: style1_fade_2_to_3lanes
+    400042: style2_2lanes_base
+    400044: style2_2lanes_curve_15degrees
+    400046: style2_2lanes_curve_30degrees
+    400048: style2_2lanes_exits
+    400050: style2_2lanes_parkingspace
+    400052: style2_3anes_base
+    400054: style2_3lanes_curve_15degrees
+    400056: style2_3lanes_curve_30degrees
+    400058: style2_3lanes_exits
+    400060: style2_3lanes_parkingspace
+    400062: style2_fade_2_to_3lanes
+    400064: style3_2lanes_base
+    400066: style3_2lanes_curve_15degrees
+    400068: style3_2lanes_curve_30degrees
+    400070: style3_2lanes_exits
+    400072: style3_2lanes_parkingspace
+    400074: style3_3anes_base
+    400076: style3_3lanes_curve_15degrees
+    400078: style3_3lanes_curve_30degrees
+    400080: style3_3lanes_exits
+    400082: style3_3lanes_parkingspace
+    400084: style3_fade_2_to_3lanes
+    2300000: fade_style1_style2_2lanes
+    2300002: fade_style1_style2_3lanes
+    2300004: fade_style1_style3_2lanes
+    2300006: fade_style1_style3_3lanes
+    2300008: fade_style2_style3_2lanes
+    2300010: fade_style2_style3_3lanes
+    2300012: style1_2lanes_base
+    2300014: style1_2lanes_curve_15degrees
+    2300016: style1_2lanes_curve_30degrees
+    2300018: style1_2lanes_exits
+    2300020: style1_2lanes_middlepart_signs
+    2300022: style1_2lanes_parkingspace
+    2300024: style1_3anes_base
+    2300026: style1_3lanes_curve_15degrees
+    2300028: style1_3lanes_curve_30degrees
+    2300030: style1_3lanes_exits
+    2300032: style1_3lanes_middlepart_signs
+    2300034: style1_3lanes_parkingspace
+    2300036: style1_fade_2_to_3lanes
+    2300038: style2_2lanes_base
+    2300040: style2_2lanes_curve_15degrees
+    2300042: style2_2lanes_curve_30degrees
+    2300044: style2_2lanes_exits
+    2300046: style2_2lanes_parkingspace
+    2300048: style2_3anes_base
+    2300050: style2_3lanes_curve_15degrees
+    2300052: style2_3lanes_curve_30degrees
+    2300054: style2_3lanes_exits
+    2300056: style2_3lanes_parkingspace
+    2300058: style2_fade_2_to_3lanes
+    2300060: style3_2lanes_base
+    2300062: style3_2lanes_curve_15degrees
+    2300064: style3_2lanes_curve_30degrees
+    2300066: style3_2lanes_exits
+    2300068: style3_2lanes_parkingspace
+    2300070: style3_3anes_base
+    2300072: style3_3lanes_curve_15degrees
+    2300074: style3_3lanes_curve_30degrees
+    2300076: style3_3lanes_exits
+    2300078: style3_3lanes_parkingspace
+    2300080: style3_fade_2_to_3lanes
+    3300000: fade_style1_style2_2lanes
+    3300002: fade_style1_style2_3lanes
+    3300004: fade_style1_style3_2lanes
+    3300006: fade_style1_style3_3lanes
+    3300008: fade_style2_style3_2lanes
+    3300010: fade_style2_style3_3lanes
+    3300012: style1_2lanes_base
+    3300014: style1_2lanes_curve_15degrees
+    3300016: style1_2lanes_curve_30degrees
+    3300018: style1_2lanes_exits
+    3300020: style1_2lanes_middlepart_signs
+    3300022: style1_2lanes_parkingspace
+    3300024: style1_3anes_base
+    3300026: style1_3lanes_curve_15degrees
+    3300028: style1_3lanes_curve_30degrees
+    3300030: style1_3lanes_exits
+    3300032: style1_3lanes_middlepart_signs
+    3300034: style1_3lanes_parkingspace
+    3300036: style1_fade_2_to_3lanes
+    3300038: style2_2lanes_base
+    3300040: style2_2lanes_curve_15degrees
+    3300042: style2_2lanes_curve_30degrees
+    3300044: style2_2lanes_exits
+    3300046: style2_2lanes_parkingspace
+    3300048: style2_3anes_base
+    3300050: style2_3lanes_curve_15degrees
+    3300052: style2_3lanes_curve_30degrees
+    3300054: style2_3lanes_exits
+    3300056: style2_3lanes_parkingspace
+    3300058: style2_fade_2_to_3lanes
+    3300060: style3_2lanes_base
+    3300062: style3_2lanes_curve_15degrees
+    3300064: style3_2lanes_curve_30degrees
+    3300066: style3_2lanes_exits
+    3300068: style3_2lanes_parkingspace
+    3300070: style3_3anes_base
+    3300072: style3_3lanes_curve_15degrees
+    3300074: style3_3lanes_curve_30degrees
+    3300076: style3_3lanes_exits
+    3300078: style3_3lanes_parkingspace
+    3300080: style3_fade_2_to_3lanes
     4300000: style1_2lanes_base
     4300002: style1_fade_2_to_3lanes
     4300004: style1_3anes_base
@@ -51,7 +218,43 @@ ModelImporter:
     4300088: fade_style1_style3_3lanes
     4300090: fade_style2_style3_2lanes
     4300092: fade_style2_style3_3lanes
-  externalObjects: {}
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden asphalt mitte 01
+    second: {fileID: 2100000, guid: 860a0c7fb8c1a2240af76e78cdb38aec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden betonbloecke
+    second: {fileID: 2100000, guid: dc19b2a011304bd48af3f052e0143178, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden bordsteinkante
+    second: {fileID: 2100000, guid: 0fcbfff4d58691441be5cecb0e122129, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden fahrbahn 01
+    second: {fileID: 2100000, guid: dcbe654e024a1544d80c7d8adaf946ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden fahrbahn 01a
+    second: {fileID: 2100000, guid: 3ebfb2edefe424b47b83fab7c8e74e6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden fahrbahnmarkierung
+    second: {fileID: 2100000, guid: 8527b147fb098e0479caf90eeffc4e94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boden wiese
+    second: {fileID: 2100000, guid: 7b4a1f9095a707146b3c362d6ea2d8d0, type: 2}
   materials:
     importMaterials: 1
     materialName: 2
