@@ -13,17 +13,17 @@ namespace ElectronicRoadSign
 		// the characters that are displayable in order of how they appear on the texture
 		public const string DISPLAYABLE_CHARACTERS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$^()-+=<>?,./:'*_\"#;[]{}%&";
 
-		// number of characters per row on the texture
+		// number of characters per row on the texture - DZ: changed 16 to 2.
 		public int _TEXTURE_COLUMNS = 16;
 
 		// number of rows of characters on the texture
-		public int _TEXTURE_ROWS = 1;
+		public int _TEXTURE_ROWS = ;
 
-		// the character height ( 180 / 2048 )
-		public  float _TEXTURE_PANEL_HEIGHT = 0.087890625f;
+        // the character height ( 180 / 2048 ) - DZ: I increased 10 times then changed back  - 087890625f
+        public float _TEXTURE_PANEL_HEIGHT = 0.87890625f;
 
-		// the character width ( 128 / 2048 )
-		public  float _TEXTURE_PANEL_WIDTH = 0.0625f;
+        // the character width ( 128 / 2048 ) - DZ: I increaswed 10 times then changed back   - 0.0625f
+        public float _TEXTURE_PANEL_WIDTH = 0.425f;
 
 		// texture margin around the display characters
 		public  float _TEXTURE_PANEL_MARGIN = 0.001f;
@@ -34,7 +34,7 @@ namespace ElectronicRoadSign
 		#region Inspector Variables
 
 		// the text message to be displayed (hint: the display has 3 lines with 8 characters per line)
-		public string MessageText = "WARNING ZOMBIES AHEAD!";
+		public string MessageText = "SPEED!";
 
 		// duration each screen of a message is displayed (if there is more than 3 lines of text)
 		public float ScreenDisplayTime = 5.0f;
@@ -103,8 +103,8 @@ namespace ElectronicRoadSign
 		{
 			_initialized = false;
 
-			// initialize array
-			_panelUVs = new int[24, 4];
+			// initialize array - DZ changed UVs [24, 4] to [2, 3] but not changed. Then changed back to [24,4]
+			_panelUVs = new int[24,4];
 			_mesh = GetComponent<MeshFilter>().mesh;
 
 			//Vector2 ul, ur, bl, br;
@@ -116,10 +116,10 @@ namespace ElectronicRoadSign
 				{
 					panelNumber = ( i * 8 ) + j;
 
-					// find the panel UVs and store their indexes
-					_panelUVs[panelNumber, 0] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f ) ); // upper left
+					// find the panel UVs and store their indexes - DZ inceased all to 0.04f from 0.02f, then the letter shows 2 digital later
+					_panelUVs[panelNumber, 0] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f ) ); // upper left 
 					_panelUVs[panelNumber, 1] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f ) ); // upper right
-					_panelUVs[panelNumber, 2] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f - 0.005f ) ); // lower left
+					_panelUVs[panelNumber, 2] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f - 0.005f ) ); // lower left -
 					_panelUVs[panelNumber, 3] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f - 0.005f ) ); // lower right
 				}
 			}
@@ -209,16 +209,16 @@ namespace ElectronicRoadSign
 				}
 			}
 
-			// center the lines
-			for ( int i = 0; i < lineList.Count; i++ )
-			{
-				lineList[i] = lineList[i].Trim();
-				var spacesToPrepend = Mathf.FloorToInt( ( 8 - lineList[i].Length ) / 2 );
-				for ( int j = 0; j < spacesToPrepend; j++ )
-				{
-					lineList[i] = " " + lineList[i];
-				}
-			}
+			// center the lines  - NO NEED, DZ Removed them using //
+		//	for ( int i = 0; i < lineList.Count; i++ )
+		//	{
+		//		lineList[i] = lineList[i].Trim();
+		//		var spacesToPrepend = Mathf.FloorToInt( ( 8 - lineList[i].Length ) / 2 );
+		//		for ( int j = 0; j < spacesToPrepend; j++ )
+		//		{
+		//			lineList[i] = " " + lineList[i];
+		//		}
+		//	}
 
 			// store the lines in a regular array
 			_lines = lineList.ToArray();
@@ -237,7 +237,7 @@ namespace ElectronicRoadSign
 			}
 		}
 
-		// updates the display with a screen of text
+		// updates the display with a screen of text  DZ <<<<< May be the case!
 		private void DisplayText()
 		{
 			// display 3 lines of text
@@ -328,9 +328,9 @@ namespace ElectronicRoadSign
 			var charX = ( ( charIndex % _TEXTURE_COLUMNS ) * _TEXTURE_PANEL_WIDTH ) + _TEXTURE_PANEL_MARGIN;
 			var charY = 1f - ( Mathf.Floor( charIndex / _TEXTURE_COLUMNS ) * _TEXTURE_PANEL_HEIGHT ) + _TEXTURE_PANEL_MARGIN;
 
-			// calculate new uv coords
+			// calculate new uv coords   DZ: Changed the , charY to chary *2 then changed back. (it impacts the displace area of the only charactor only).
 			newUVs[_panelUVs[panelNumber, 0]] = new Vector2( charX, charY );
-			newUVs[_panelUVs[panelNumber, 1]] = new Vector2( charX + _TEXTURE_PANEL_WIDTH, charY );
+			newUVs[_panelUVs[panelNumber, 1]] = new Vector2( charX + _TEXTURE_PANEL_WIDTH, charY);
 			newUVs[_panelUVs[panelNumber, 2]] = new Vector2( charX, charY - _TEXTURE_PANEL_HEIGHT );
 			newUVs[_panelUVs[panelNumber, 3]] = new Vector2( charX + _TEXTURE_PANEL_WIDTH, charY - _TEXTURE_PANEL_HEIGHT );
 
