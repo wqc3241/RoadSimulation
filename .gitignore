@@ -5,6 +5,7 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 /Data/
+/Assets/Logitech SDK/
 
 # Visual Studio 2015 cache directory
 /.vs/
