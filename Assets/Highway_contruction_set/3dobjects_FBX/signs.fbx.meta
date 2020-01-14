@@ -1,9 +1,52 @@
 fileFormatVersion: 2
 guid: 66d8c1f35b327b84a93e9bccb5e37efb
-timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
+    100000: 2_to_3_lanes_sign
+    100002: 2_to_3_lanes_sign_100m
+    100004: Camera
+    100006: exit_sign
+    100008: exit_sign_100m
+    100010: exit_sign_200m
+    100012: exit_sign_300m
+    100014: limitation_post
+    100016: parking_sign_01
+    100018: parking_sign_02
+    100020: //RootNode
+    100022: warning_sign
+    400000: 2_to_3_lanes_sign
+    400002: 2_to_3_lanes_sign_100m
+    400004: Camera
+    400006: exit_sign
+    400008: exit_sign_100m
+    400010: exit_sign_200m
+    400012: exit_sign_300m
+    400014: limitation_post
+    400016: parking_sign_01
+    400018: parking_sign_02
+    400020: //RootNode
+    400022: warning_sign
+    2300000: 2_to_3_lanes_sign
+    2300002: 2_to_3_lanes_sign_100m
+    2300004: exit_sign
+    2300006: exit_sign_100m
+    2300008: exit_sign_200m
+    2300010: exit_sign_300m
+    2300012: limitation_post
+    2300014: parking_sign_01
+    2300016: parking_sign_02
+    2300018: warning_sign
+    3300000: 2_to_3_lanes_sign
+    3300002: 2_to_3_lanes_sign_100m
+    3300004: exit_sign
+    3300006: exit_sign_100m
+    3300008: exit_sign_200m
+    3300010: exit_sign_300m
+    3300012: limitation_post
+    3300014: parking_sign_01
+    3300016: parking_sign_02
+    3300018: warning_sign
     4300000: limitation_post
     4300002: exit_sign
     4300004: warning_sign
@@ -14,7 +57,38 @@ ModelImporter:
     4300014: exit_sign_100m
     4300016: exit_sign_200m
     4300018: exit_sign_300m
-  externalObjects: {}
+    11100000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: leitplanke
+    second: {fileID: 2100000, guid: c366af8ac6a7bd44db85629c203964e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 18c9610452108074f9f7885686508b0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: schilder front 04
+    second: {fileID: 2100000, guid: 79319e198f4ca0f4dafb624c694ef6d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: schilder front 05
+    second: {fileID: 2100000, guid: d1ddf497ccb531a4dadd0eb83e1f269a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: schilder front 06
+    second: {fileID: 2100000, guid: 2535541bd64c35247a54a82594789c2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: schilder metal
+    second: {fileID: 2100000, guid: dab60f56ec0c61546b9b163f669d4b2f, type: 2}
   materials:
     importMaterials: 1
     materialName: 2
