@@ -1,0 +1,23 @@
+
+
+1. The Speed Sign Panel is ready to use as a Prefab called "Speed_Sign_Panel", 
+  you could find it from this path: "/Assets/SpeedSign/Prefab/"
+
+2. The prefab has an exclusive C# script called "SpeedSignHelper",
+  it contained a method called "setSpeed", 
+  it has one String argument as an input for your preferred Speed,
+  you can call it from your own script.
+
+3. Also there is an Example Scene called "test Scene" that shows the usage,
+  you can find it from this path: "/Assets/SpeedSign/test Scene"
+
+ ***************
+ ***  Notic  *** 
+ ***************
+ (based on Unity version that you are using) there is an old version of the cinematic post-processing effect that used in the test scene.
+ the material of LED has emission and that makes the LEDs look glowing.
+ So, if you are using any other addons for that purpose, you can delete the Folder called "Standard Assets", also, make sure to delete it's contained files and folders too. 
+ you can find it from this path: "/Assets/SpeedSign/".
+
+
+ Hope you enjoy it :)

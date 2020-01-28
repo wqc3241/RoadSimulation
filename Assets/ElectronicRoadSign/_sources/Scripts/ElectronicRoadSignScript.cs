@@ -14,19 +14,19 @@ namespace ElectronicRoadSign
 		public const string DISPLAYABLE_CHARACTERS = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!$^()-+=<>?,./:'*_\"#;[]{}%&";
 
 		// number of characters per row on the texture
-		public int _TEXTURE_COLUMNS = 16;
+		public int _TEXTURE_COLUMNS = 1;
 
 		// number of rows of characters on the texture
 		public int _TEXTURE_ROWS = 1;
 
 		// the character height ( 180 / 2048 )
-		public  float _TEXTURE_PANEL_HEIGHT = 0.087890625f;
+		public  float _TEXTURE_PANEL_HEIGHT = 1.0f;
 
 		// the character width ( 128 / 2048 )
-		public  float _TEXTURE_PANEL_WIDTH = 0.0625f;
+		public  float _TEXTURE_PANEL_WIDTH = 0.1f;
 
 		// texture margin around the display characters
-		public  float _TEXTURE_PANEL_MARGIN = 0.001f;
+		public  float _TEXTURE_PANEL_MARGIN = 0.0f;
 
 		#endregion
 
@@ -104,24 +104,39 @@ namespace ElectronicRoadSign
 			_initialized = false;
 
 			// initialize array
-			_panelUVs = new int[24, 4];
+			_panelUVs = new int[3, 4];
 			_mesh = GetComponent<MeshFilter>().mesh;
 
 			//Vector2 ul, ur, bl, br;
 			int panelNumber;
 
+			//for ( int i = 0; i < 3; i++ )
+			//{
+			//	for ( int j = 0; j < 8; j++ )
+			//	{
+			//		panelNumber = ( i * 8 ) + j;
+
+			//		// find the panel UVs and store their indexes
+			//		_panelUVs[panelNumber, 0] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f ) ); // upper left
+			//		_panelUVs[panelNumber, 1] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f ) ); // upper right
+			//		_panelUVs[panelNumber, 2] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f - 0.005f ) ); // lower left
+			//		_panelUVs[panelNumber, 3] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f - 0.005f ) ); // lower right
+			//	}
+			//}
+
 			for ( int i = 0; i < 3; i++ )
 			{
-				for ( int j = 0; j < 8; j++ )
-				{
-					panelNumber = ( i * 8 ) + j;
+					panelNumber = i;
 
 					// find the panel UVs and store their indexes
 					_panelUVs[panelNumber, 0] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f ) ); // upper left
-					_panelUVs[panelNumber, 1] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f ) ); // upper right
-					_panelUVs[panelNumber, 2] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f - 0.005f ) ); // lower left
-					_panelUVs[panelNumber, 3] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f - 0.005f ) ); // lower right
-				}
+					_panelUVs[panelNumber, 1] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.005f, 1f ) ); // upper right
+
+					//_panelUVs[panelNumber, 2] = FindUV( _mesh, new Vector2( panelNumber * 0.02f, 1f - 0.005f ) ); // lower left
+					//_panelUVs[panelNumber, 3] = FindUV( _mesh, new Vector2( ( panelNumber * 0.02f ) + 0.01f, 1f - 0.005f ) ); // lower right
+
+					_panelUVs[panelNumber, 2] = FindUV(_mesh, new Vector2(panelNumber * 0.02f, 1f-0.005f)); // lower left
+					_panelUVs[panelNumber, 3] = FindUV(_mesh, new Vector2((panelNumber * 0.02f) + 0.005f, 1f-0.005f)); // lower right
 			}
 
 			_initialized = true;
@@ -241,30 +256,30 @@ namespace ElectronicRoadSign
 		private void DisplayText()
 		{
 			// display 3 lines of text
-			for ( int i = 0; i < 1; i++ )
+			for (int i = 0; i < 1; i++)
 			{
 				// calculate the line index
-				var lineIndex = ( _screen * 3 ) + i;
+				var lineIndex = (_screen * 3) + i;
 
 				// if the line index exists
-				if ( lineIndex < _lines.Length )
+				if (lineIndex < _lines.Length)
 				{
 					// display line text
-					for ( int j = 0; j < 8; j++ )
+					for (int j = 0; j < 3; j++)
 					{
 						// display character
-						if ( j < _lines[lineIndex].Length )
-							DisplayCharacter( i, j, _lines[lineIndex][j] );
+						if (j < _lines[lineIndex].Length)
+							DisplayCharacter(j, _lines[lineIndex][j]);
 						else
-							DisplayCharacter( i, j, ' ' );
+							DisplayCharacter(j, ' ');
 					}
 				}
 				else
 				{
 					// no line of text to display, so clear the remaining lines
-					for ( int j = 0; j < 8; j++ )
+					for (int j = 0; j < 8; j++)
 					{
-						DisplayCharacter( i, j, ' ' );
+						DisplayCharacter(j, ' ');
 					}
 				}
 			}
@@ -273,12 +288,9 @@ namespace ElectronicRoadSign
 		// blanks out the display
 		private void ClearDisplay()
 		{
-			for ( int row = 0; row < 3; row++ )
+			for ( int col = 0; col < 1; col++ )
 			{
-				for ( int col = 0; col < 8; col++ )
-				{
-					DisplayCharacter( row, col, ' ' );
-				}
+				DisplayCharacter( col, ' ' );
 			}
 		}
 
@@ -312,9 +324,9 @@ namespace ElectronicRoadSign
 		}
 
 		// displays a single character of text
-		private void DisplayCharacter( int row, int col, char p )
+		private void DisplayCharacter( int col, char p )
 		{
-			var panelNumber = ( row * 8 ) + col;
+			var panelNumber = col;
 			var newUVs = _mesh.uv;
 			var charIndex = DISPLAYABLE_CHARACTERS.IndexOf( p );
 
