@@ -16,7 +16,7 @@ public class SpeedReportor : MonoBehaviour {
         //Debug.Log(rgbd.velocity.magnitude * 2.23694);
         if (UI_SpeedDisplay.UI_SD && rgbd)
         {
-            UI_SpeedDisplay.UI_SD.updateSpeed(rgbd.velocity.magnitude * 13/10);
+            UI_SpeedDisplay.UI_SD.updateSpeed(rgbd.velocity.magnitude * 20/10);
         }
     }
 

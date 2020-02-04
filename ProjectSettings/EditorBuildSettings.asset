@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scene/Menu_Yubing.unity
     guid: 1038c4fc8fe504e4eac784abbc63a0bd
   - enabled: 0
-    path: Assets/Scene/Scene_Yubing.unity
-    guid: d0e93e2f541a55a459e842e11d27ec14
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scene/Scene1.unity
-    guid: 967d8bfb2a1568748b7917de6af6dbde
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scene/Scene_Yubing_stright.unity
     guid: 87f42c360a23c704985c55ba174ee135
+  - enabled: 1
+    path: Assets/Scene/HighwayTrackMap.unity
+    guid: 8ccef7cb5b31e7b4b9e2099691dcdb65
