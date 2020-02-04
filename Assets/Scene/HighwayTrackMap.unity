@@ -1489,15 +1489,15 @@ MonoBehaviour:
   m_MaximumSteerAngle: 20
   m_SteerHelper: 1
   m_TractionControl: 0.8
-  m_FullTorqueOverAllWheels: 2000
+  m_FullTorqueOverAllWheels: 500
   m_ReverseTorque: 1000
   m_MaxHandbrakeTorque: 1e+16
-  m_Downforce: 100
+  m_Downforce: 125
   m_SpeedType: 0
   m_Topspeed: 200
   m_RevRangeBoundary: 1
   m_SlipLimit: 0.9
-  m_BrakeTorque: 20000
+  m_BrakeTorque: 2000
 --- !u!54 &767173167
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2231,8 +2231,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1237940978}
   m_LocalRotation: {x: -0.04989563, y: -0, z: -0, w: 0.99875444}
-  m_LocalPosition: {x: -0.33, y: 0.94262147, z: -0.13999987}
-  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
+  m_LocalPosition: {x: -0.33, y: 1.3, z: -0.18}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 767173168}
   m_RootOrder: 0
@@ -2271,8 +2271,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 300
+  field of view: 44.63558
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
