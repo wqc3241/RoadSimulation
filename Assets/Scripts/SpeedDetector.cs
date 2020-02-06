@@ -24,7 +24,7 @@ public class SpeedDetector : MonoBehaviour {
             if (rb)
             {
                 int speed = (int) other.gameObject.GetComponentInChildren<DataRecorder>().getSpeed();
-                GetComponentInParent<SpeedSign.SpeedSignHelper>().setSpeed(speed.ToString());
+                GetComponentInParent<SpeedSign.SpeedSignHelper>().setSpeed((speed*2).ToString());
             }
             //Debug.Log("Dector car");
         }
