@@ -180,8 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166206f967518b94e99dbc3799d94afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outputPath: 
-  playerCar: {fileID: 0}
+  outputPath: Data\
 --- !u!114 &114779267603387658
 MonoBehaviour:
   m_ObjectHideFlags: 1
