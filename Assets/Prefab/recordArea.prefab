@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 33278974968277578}
   - component: {fileID: 65018434636913144}
   - component: {fileID: 23389604804568284}
-  - component: {fileID: 114145924564866670}
   m_Layer: 0
   m_Name: recordArea
   m_TagString: Untagged
@@ -169,18 +168,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114145924564866670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892571144816654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 166206f967518b94e99dbc3799d94afe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outputPath: Data\
 --- !u!114 &114779267603387658
 MonoBehaviour:
   m_ObjectHideFlags: 1

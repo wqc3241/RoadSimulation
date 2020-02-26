@@ -145,7 +145,7 @@ public class DataRecorder : MonoBehaviour {
             return;
         }
 
-        Debug.Log("Recording");
+        Debug.Log("Data Recorder Recording");
         recording = true;
     }
 

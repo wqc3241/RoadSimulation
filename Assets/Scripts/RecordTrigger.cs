@@ -12,6 +12,7 @@ public class RecordTrigger : MonoBehaviour {
 
     private bool recording = false;
     private GameObject playerCar;
+    private string zoneName;
     private Rigidbody carRB;
     private int outputCount = 1;
 
@@ -19,24 +20,26 @@ public class RecordTrigger : MonoBehaviour {
     //startTime : list of speed change at each delta time after start time
 
     //record the speed, wheel, accelerator, brake
-    private Dictionary<float, List<float>> speedRecords;
+
     private Dictionary<float, double> speedData = new Dictionary<float, double>();
+    private Dictionary<string, List<List<float>>> zoneData = new Dictionary<string, List<List<float>>>();
 
     //output order:time speed, wheel, brake, acceleration
-    private List<List<float>> allData = new List<List<float>>();
+    private List<List<object>> allData = new List<List<object>>();
+
 
     float h, v, b;
 
         // Use this for initialization
     void Awake()
     {
-        playerCar = GameObject.FindGameObjectWithTag("Player");
+        //playerCar = GameObject.FindGameObjectWithTag("Player");
         //Debug.Log(playerCar);
 
-        carRB = playerCar.GetComponent<Rigidbody>();
+        carRB = gameObject.GetComponent<Rigidbody>();
         if (carRB == null)
             Debug.LogError("Error no rigbidbody attached to parent object");
-
+        //Debug.Log(zoneData.Count);
 
     }
 
@@ -78,7 +81,14 @@ public class RecordTrigger : MonoBehaviour {
 
         if (recording && carRB)
         {
-            allData.Add(new List<float> { getTime(), getSpeed(), getWheel(h), getBrake(b), getAcceleration(v), getPositionX(), getPositionZ() });
+            allData.Add(new List<object> { getZone(zoneName), getTime(), getSpeed(), getWheel(h), getBrake(b), getAcceleration(v), getPositionX(), getPositionZ() });
+            //Debug.Log(allData.Count);
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            storeData();
         }
     }
 
@@ -95,20 +105,19 @@ public class RecordTrigger : MonoBehaviour {
         outputCount++;
 
         StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine("Time        " + "Speed       " + "Wheel       " + "Brake       " + "Acceleration " + "X           " + "Z ");
+        writer.WriteLine("Zone        " + "Time        " + "Speed       " + "Wheel       " + "Brake       " + "Acceleration " + "X           " + "Z ");
 
-        foreach (List<float> row in allData)
+        foreach ( List<object> entry in allData)
         {
             string tempOut = "";
-            foreach (float record in row)
+            foreach ( object record in entry)
             {
-                tempOut += record.ToString("0.00") + "        ";
+                    tempOut += record.ToString() + "        ";
             }
             writer.WriteLine(tempOut);
         }
 
         writer.Close();
-
 
         //clean datas
         foreach (var item in allData)
@@ -129,36 +138,38 @@ public class RecordTrigger : MonoBehaviour {
     public float getSpeed()
     {
         //default velocity is m/s
-        float mph = carRB.velocity.magnitude * 2.237f;
+        float mph = carRB.velocity.magnitude * 20 / 10f;
         return (float)Math.Round((double)mph, 2);
     }
 
     public float getWheel(float angle)
     {
-        return (angle*45);
+        return ((float)Math.Round(angle*45*100f)/100f);
     }
 
     public float getBrake(float brake)
     {
-        return (brake/65534*100);
+        return ((float)Math.Round(brake/65534*100*100f)/100f);
     }
 
     public float getAcceleration(float acc)
     {
-        return (acc/65534*100);
+        return ((float)Math.Round(acc/65534*100*100f)/100f);
     }
 
     public float getPositionX()
     {
         float X = carRB.transform.position.x;
-        return X;
+        return (float)Math.Round(X*100f)/100f;
     }
 
     public float getPositionZ()
     {
-        float Z = carRB.transform.position.z;
+        float Z = (float)Math.Round(carRB.transform.position.z*100f)/100f;
         return Z;
     }
+
+    
 
 
     /// <summary>
@@ -177,36 +188,37 @@ public class RecordTrigger : MonoBehaviour {
 
     public void storeRecord()
     {
-        if (!recording)
-        {
-            return;
-        }
-
         storeData();
         Debug.Log("DataStored");
+    }
+
+    public string getZone(string name)
+    {
+
+        return name;
     }
 
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "electricalSign" || other.tag == "staticSign")
         {
-            playerCar = other.gameObject;
+            //Debug.Log(other.name);
+            zoneName = other.name;
             Awake();
             startRecord();
         }
     }
 
- /*   void OnTriggerStay(Collider other)
-    {
-
-    }
- */
 
     void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player") {
-            storeRecord();
+        if(other.tag == "electricalSign" || other.tag == "staticSign") 
+        {
+            recording = false;
+
+                //Debug.Log(zoneData.Count());
+
         }
     }
 }
