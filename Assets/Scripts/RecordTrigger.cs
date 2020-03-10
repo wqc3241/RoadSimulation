@@ -4,10 +4,11 @@ using UnityEngine;
 using System.IO;
 using System;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
 
 public class RecordTrigger : MonoBehaviour {
 
-    public string outputPath;
+    private string outputPath;
 
 
     private bool recording = false;
@@ -55,7 +56,7 @@ public class RecordTrigger : MonoBehaviour {
         }
         */
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (LogitechGSDK.LogiIsConnected(0) == false)
         {
@@ -72,7 +73,7 @@ public class RecordTrigger : MonoBehaviour {
             // pass the input to the car!
             //h = CrossPlatformInputManager.GetAxis("Horizontal");
 
-            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            h = Mathf.Abs(rec.lX - 32767);
             v = Mathf.Abs(rec.lY - 32767);
             b = -Mathf.Abs(rec.lRz - 32767);
 
@@ -85,19 +86,37 @@ public class RecordTrigger : MonoBehaviour {
             //Debug.Log(allData.Count);
 
         }
-
         if (Input.GetKeyDown(KeyCode.S))
         {
             storeData();
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            foreach (var item in allData)
+                item.Clear();
+
+            allData.Clear();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 
     private void storeData()
     {
+
+
         recording = false;
 
+        outputPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         //only perform at the end of the driving test
-        string path = outputPath;
+
+        //outputPath = Application.dataPath + "/Data";
+        string path = outputPath + "/Data";
         string filename = "recordData" + outputCount.ToString() + "--" + System.DateTime.Now.ToString().Replace('/', '-').Replace(' ', '-').Replace(':', '-') + ".txt";
         path += filename;
         Debug.Log(path);
@@ -132,19 +151,19 @@ public class RecordTrigger : MonoBehaviour {
     /// <returns></returns>
     public float getTime()
     {
-        return (float)Math.Round((double)Time.time, 2);
+        return (float)Math.Round((double)Time.time, 4);
     }
 
     public float getSpeed()
     {
         //default velocity is m/s
-        float mph = carRB.velocity.magnitude * 20 / 10f;
+        float mph = carRB.velocity.magnitude * 2.23693629f * 20 / 10f;
         return (float)Math.Round((double)mph, 2);
     }
 
     public float getWheel(float angle)
     {
-        return ((float)Math.Round(angle*45*100f)/100f);
+        return ((float)Math.Round(angle / 65534  *100* 100f) / 100f) - 50;
     }
 
     public float getBrake(float brake)
@@ -207,6 +226,11 @@ public class RecordTrigger : MonoBehaviour {
             zoneName = other.name;
             Awake();
             startRecord();
+        }
+        else if (other.tag == "Finishline")
+        {
+            storeData();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

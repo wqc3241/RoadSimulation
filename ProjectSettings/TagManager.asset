@@ -16,6 +16,7 @@ TagManager:
   - PlayerCar
   - electricalSign
   - staticSign
+  - Finishline
   layers:
   - Default
   - TransparentFX

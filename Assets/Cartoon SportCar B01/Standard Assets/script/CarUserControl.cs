@@ -62,10 +62,6 @@ namespace UnityStandardAssets.Vehicles.Car
                 b = CrossPlatformInputManager.GetAxis("Vertical");
                 //Debug.Log(v);
 
-                if (Input.GetKeyDown("r"))
-                {
-                    m_Car.transform.Rotate(Vector3.up * 90);
-                }
                 if (!moveBack)
                     m_Car.Move(h, v, b, handbrake, moveBack);
                 else
